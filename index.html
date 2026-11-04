@@ -187,6 +187,16 @@ sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .kneefig figcaption{font-size:12.5px;color:var(--muted);line-height:1.7}
 .spots{margin:0;padding-left:1.5em;display:flex;flex-direction:column;gap:8px}
 .spots b{color:var(--sumi)}
+.toslides{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:4px;background:var(--shu);color:#12141A;text-decoration:none;box-shadow:0 2px 0 rgba(0,0,0,.4)}
+.toslides:hover{filter:brightness(1.08);color:#12141A}
+.toslides .ic{font-size:18px}
+.toslides b{display:block;font:700 17px/1.4 var(--font-mincho)}
+.toslides small{display:block;font-size:12.5px;opacity:.85}
+.toslides .ar{margin-left:auto;font-size:20px;font-weight:700}
+.stage-slides{position:absolute;right:12px;top:10px;z-index:2;font:700 13px/1 var(--font-gothic);color:#12141A;background:var(--shu);border-radius:999px;padding:9px 14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.stage-slides:hover{filter:brightness(1.08);color:#12141A}
+.stage.cmp .stage-slides{display:none}
+.foot{opacity:.85}
 .guidecard{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid #4A4F5C;border-left:4px solid var(--shu);border-radius:3px;background:var(--card);color:var(--sumi);text-decoration:none}
 .guidecard:hover{background:var(--card2)}
 .guidecard .gk{font-size:11.5px;letter-spacing:.12em;color:var(--shu);font-weight:700}
@@ -247,6 +257,8 @@ noscript p{padding:16px;color:#EDE6D6}
   h1{font-size:25px}
   .lbl{font-size:10.5px;padding:2px 5px}
   .stage.cmp-tb{height:64vh;max-height:660px}
+  .overlay-top{display:none}
+  .stage-slides{font-size:12px;padding:8px 12px}
   .cmptag{font-size:12px;padding:4px 7px}
   .cams .btn{font-size:12px;padding:6px 9px;min-height:36px}
 }
@@ -260,6 +272,7 @@ noscript p{padding:16px;color:#EDE6D6}
     <div id="labels"></div>
     <div class="cmptag a" id="cmpTagA">体の硬い初心者<small>外旋が少なく、腰が丸まりやすい</small></div>
     <div class="cmptag b" id="cmpTagB">熟練した人<small>股関節が大きく外へ回る</small></div>
+    <a class="stage-slides" href="guide/">▶ スライドで学ぶ</a>
     <div class="overlay-top"><span>⟲ ドラッグで回転　・　二本指／ホイールで拡大</span></div>
     <div class="cams" role="group" aria-label="視点">
       <button class="btn" data-cam="front" aria-pressed="true">正面</button>
@@ -302,7 +315,7 @@ noscript p{padding:16px;color:#EDE6D6}
       <div class="mast-row"><span class="seal" aria-hidden="true">膝</span><p class="kicker">坐禅をはじめる人のための教育用模型</p></div>
       <h1>坐禅の脚組み 3D模型<span>結跏趺坐・半跏趺坐で、膝を痛めない仕組み</span></h1>
       <p class="lead">股関節の「外旋」が足りないまま足を腿に乗せると、膝の内側では半月板が挟まれ、外側では靭帯が伸ばされます。実物の骨の形をもとにした模型を動かして、その仕組みを確かめられます。</p>
-      <p class="notice">医療・解剖学の専門家ではない個人が、AIにほぼすべての作業を任せて作ったものです。内容の正確さは保証できません。詳しくは<a href="#disclaimer">免責事項</a>をご覧ください。</p>
+      <a class="toslides" href="guide/"><span class="ic" aria-hidden="true">▶</span><span><b>スライドで学ぶ</b><small>膝を痛めないためのストレッチ・ガイド（16枚）</small></span><span class="ar" aria-hidden="true">→</span></a>
       <nav class="toc" aria-label="ページ内の目次">
         <a href="#controls">模型を動かす</a><a href="#gaisen">外旋とは</a><a href="#ugoki">動きの名前</a><a href="#shikumi">膝を痛める仕組み</a><a href="#basho">負担がかかる場所</a><a href="#kurabe">硬い人と熟練者</a><a href="guide/">ストレッチ・ガイド</a><a href="#taisaku">負担を減らす工夫</a><a href="#faq">よくある質問</a><a href="#sources">出典</a>
       </nav>
@@ -583,7 +596,7 @@ noscript p{padding:16px;color:#EDE6D6}
     <footer class="foot" id="disclaimer">
       <h2>免責事項</h2>
       <ul>
-        <li>このページは、医療・解剖学・坐禅指導の専門家ではない個人が、AI（Anthropic社のClaude）にほぼすべての調査・設計・プログラミングを任せて作ったものです。作成者は内容の正確さを確かめられる立場になく、内容を保証しません。</li>
+        <li>このページは医療・解剖学・坐禅指導の専門家ではない個人が作ったもので、内容の正確さは保証しません。</li>
         <li>3D模型の角度や負担の色分けは、単純化した骨格での幾何学的な計算による目安で、実際の体の測定値ではありません。</li>
         <li>医学的な診断・治療・指導の代わりにはなりません。膝や股関節に痛み・しびれ・違和感がある場合や持病がある場合は、医師や理学療法士に相談してください。</li>
         <li>このページの情報を使ったことで生じたいかなる損害についても、作成者は責任を負いません。引用した内容は、各出典で確認してください。</li>
