@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://solomon78-code.github.io/zazen-knee-3d/sitemap.xml
