@@ -45,22 +45,23 @@
 @font-face{font-family:"Shippori Mincho";src:url(assets/fonts/shippori-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Shippori Mincho";src:url(assets/fonts/shippori-700.woff2) format("woff2");font-weight:700;font-display:swap}
 :root{
-  /* layout: 3D stage (a dim zendo) on the left; a washi-paper panel on the right that reads like a temple notice. Phones: the stage sticks on top, the panel scrolls below */
-  --washi:#F1ECE2;
-  --card:#F8F4EB;
-  --sumi:#24211D;
-  --text:#3D3830;
-  --muted:#6F675B;
-  --line:#CFC5B3;
-  --shu:#B23A28;
-  --ai:#2F4B6E;
-  --ok:#4F7040; --ok-bg:#E1E7D5;
-  --warn:#8A5D0C; --warn-bg:#F1E4C6;
-  --bad:#A3301F; --bad-bg:#F3DCD3;
-  --stage:#181715;
+  /* 夜の禅堂：目にやさしい暗い配色。--sumi は「いちばん濃い文字」＝暗い画面ではいちばん明るい色 */
+  --washi:#12141A;
+  --card:#1A1D24;
+  --card2:#20242C;
+  --sumi:#ECE6D8;
+  --text:#CFC8BA;
+  --muted:#9D978C;
+  --line:#343844;
+  --shu:#E07A5F;
+  --ai:#9DB8DA;
+  --ok:#9CC18A; --ok-bg:#1F2C1C;
+  --warn:#E2B65C; --warn-bg:#33291A;
+  --bad:#F08A72; --bad-bg:#3A1F19;
+  --stage:#0D1017;
   --font-mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
   --font-gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;
-  color-scheme:light;
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
@@ -70,22 +71,31 @@ a:hover{color:var(--shu)}
 .app{display:flex;height:100%}
 .stage{position:relative;flex:1 1 auto;min-width:0;background:var(--stage)}
 #c{display:block;width:100%;height:100%;touch-action:none;outline:none}
-.panel{flex:0 0 460px;width:460px;overflow-y:auto;border-left:1px solid #3A352E;
+.panel{flex:0 0 460px;width:460px;overflow-y:auto;border-left:1px solid #262A33;
   background-color:var(--washi);
-  background-image:radial-gradient(rgba(60,45,25,.05) 1px,transparent 1.2px),radial-gradient(rgba(60,45,25,.035) 1px,transparent 1.2px);
+  background-image:radial-gradient(rgba(220,228,240,.025) 1px,transparent 1.2px),radial-gradient(rgba(220,228,240,.018) 1px,transparent 1.2px);
   background-size:7px 7px,11px 11px;background-position:0 0,3px 5px;
   padding:28px 26px 56px;display:flex;flex-direction:column;gap:26px}
 h1,h2,h3{font-family:var(--font-mincho);color:var(--sumi);text-wrap:balance;margin:0;font-weight:700}
 p{margin:0}
 /* 題字 */
 .mast{display:flex;flex-direction:column;gap:14px;padding-bottom:22px;border-bottom:3px double var(--line)}
+/* 雪の夜の景色 */
+.hero{position:relative;height:150px;margin:-28px -26px 4px;overflow:hidden;border-bottom:1px solid #262A33}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.snow{position:absolute;left:0;right:0;top:-200px;bottom:0;pointer-events:none;background-repeat:repeat;will-change:transform}
+.snow.s1{background-image:radial-gradient(1.6px 1.6px at 22px 34px,#fff 50%,transparent),radial-gradient(1.2px 1.2px at 118px 92px,#fff 50%,transparent),radial-gradient(1.4px 1.4px at 170px 160px,#fff 50%,transparent),radial-gradient(1px 1px at 72px 140px,#fff 50%,transparent);background-size:200px 200px;opacity:.75;animation:snowfall 16s linear infinite}
+.snow.s2{background-image:radial-gradient(2.2px 2.2px at 40px 60px,#fff 50%,transparent),radial-gradient(1.8px 1.8px at 150px 20px,#fff 50%,transparent),radial-gradient(2px 2px at 96px 150px,#fff 50%,transparent);background-size:200px 200px;opacity:.55;animation:snowfall 11s linear infinite;animation-delay:-4s}
+.snow.s3{background-image:radial-gradient(1px 1px at 12px 12px,#fff 50%,transparent),radial-gradient(.9px .9px at 64px 88px,#fff 50%,transparent),radial-gradient(1px 1px at 132px 120px,#fff 50%,transparent),radial-gradient(.8px .8px at 180px 50px,#fff 50%,transparent);background-size:200px 200px;opacity:.5;animation:snowfall 26s linear infinite}
+@keyframes snowfall{from{transform:translate3d(0,0,0)}to{transform:translate3d(-14px,200px,0)}}
+@media (prefers-reduced-motion:reduce){.snow{animation:none}}
 .mast-row{display:flex;align-items:center;gap:12px}
-.seal{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;flex:none;border:2px solid var(--shu);color:var(--shu);font-family:var(--font-mincho);font-weight:700;font-size:24px;line-height:1;border-radius:4px;transform:rotate(-4deg);background:rgba(178,58,40,.05)}
+.seal{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;flex:none;border:2px solid var(--shu);color:var(--shu);font-family:var(--font-mincho);font-weight:700;font-size:24px;line-height:1;border-radius:4px;transform:rotate(-4deg);background:rgba(224,122,95,.06)}
 .kicker{font-size:13px;letter-spacing:.12em;color:var(--muted)}
 h1{font-size:30px;line-height:1.35;letter-spacing:.04em}
 h1 span{display:block;margin-top:6px;font-size:16px;font-weight:400;letter-spacing:.02em;color:var(--text)}
 .lead{font-family:var(--font-mincho);font-size:16px;line-height:1.9;color:var(--text)}
-.notice{font-size:13px;line-height:1.7;color:var(--muted);padding:10px 12px;border:1px solid var(--line);background:rgba(255,255,255,.35);border-radius:3px}
+.notice{font-size:13px;line-height:1.7;color:var(--muted);padding:10px 12px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:3px}
 .toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px}
 .toc a{color:var(--sumi);text-decoration:none;border-bottom:1px solid var(--line);padding:4px 0}
 .toc a:hover{color:var(--shu);border-color:var(--shu)}
@@ -93,9 +103,24 @@ h1 span{display:block;margin-top:6px;font-size:16px;font-weight:400;letter-spaci
 .group{display:flex;flex-direction:column;gap:10px}
 .glabel{display:flex;align-items:center;gap:10px;font-family:var(--font-mincho);font-size:15px;font-weight:700;color:var(--sumi);letter-spacing:.05em}
 .glabel::before{content:"";width:16px;height:2px;background:var(--shu);flex:none}
+.glabel .step{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--shu);color:#12141A;font:700 12.5px/1 var(--font-gothic);flex:none}
+.group:has(.step) > .glabel::before{display:none}
+.howto{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:start;font-size:13.5px;line-height:1.6;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--card)}
+.howto .n{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--shu);color:var(--shu);font:700 12px/1 var(--font-gothic);margin-top:1px}
+.howto b{color:var(--sumi)}
+.ends{display:grid;grid-template-columns:3.2em 1fr 4.2em;gap:10px;font-size:11.5px;color:var(--muted);margin-top:-6px}
+.ends span:nth-child(2){display:flex;justify-content:space-between}
+.btn.primary,.seg button.primary{background:var(--shu);border-color:var(--shu);color:#12141A;font-weight:700}
+.btn.primary:hover,.seg button.primary:hover{filter:brightness(1.08);border-color:var(--shu)}
+.seg button[aria-pressed="true"].primary{background:var(--sumi);border-color:var(--sumi);color:var(--washi)}
+.checks input{appearance:none;-webkit-appearance:none;width:38px;height:22px;border-radius:11px;background:#3A3F4B;position:relative;flex:none;cursor:pointer;transition:background .15s}
+.checks input::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#B9B3A7;transition:transform .15s,background .15s}
+.checks input:checked{background:var(--shu)}
+.checks input:checked::after{transform:translateX(16px);background:#fff}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
 .seg button,.btn{font:500 14.5px/1.3 var(--font-gothic);color:var(--sumi);background:var(--card);border:1px solid var(--line);border-radius:3px;padding:10px 14px;min-height:44px;cursor:pointer}
-.seg button:hover,.btn:hover{border-color:var(--sumi)}
+.seg button:hover,.btn:hover{border-color:#8E96A6;background:var(--card2)}
+.seg button,.btn{box-shadow:0 1px 0 rgba(0,0,0,.35)}
 .seg button[aria-pressed="true"]{background:var(--sumi);border-color:var(--sumi);color:var(--washi)}
 button:focus-visible,input:focus-visible,a:focus-visible,#c:focus-visible{outline:2px solid var(--shu);outline-offset:2px}
 .hint{font-size:13px;line-height:1.7;color:var(--muted)}
@@ -106,7 +131,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,#c:focus-visible{outlin
 .chips .btn{font-size:13.5px;padding:8px 11px;min-height:40px}
 .checks{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
 .checks label{display:flex;align-items:center;gap:8px;cursor:pointer;min-height:36px}
-.checks input{accent-color:var(--sumi);width:18px;height:18px}
+
 .demo{border:1px solid var(--line);border-radius:4px;padding:16px;background:var(--card)}
 .status{border:1px solid var(--line);border-left:4px solid var(--ai);background:var(--card);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .status[data-level="ok"]{border-left-color:var(--ok)}
@@ -122,21 +147,21 @@ button:focus-visible,input:focus-visible,a:focus-visible,#c:focus-visible{outlin
 .pill.ok{background:var(--ok-bg);color:var(--ok)}
 .pill.warn{background:var(--warn-bg);color:var(--warn)}
 .pill.bad{background:var(--bad-bg);color:var(--bad)}
-.pill.info{background:#DCE3EA;color:var(--ai)}
+.pill.info{background:#1E2A38;color:var(--ai)}
 .rows{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:12.5px;margin:0}
 .rows dt{color:var(--muted)}
 .rows dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;color:var(--sumi)}
 .rows dd.warn{color:var(--warn);font-weight:700}
 .rows dd.bad{color:var(--bad);font-weight:700}
-.budget{position:relative;height:12px;border-radius:2px;background:#DDD4C3;overflow:hidden}
+.budget{position:relative;height:12px;border-radius:2px;background:#2C303A;overflow:hidden}
 .budget .used{position:absolute;left:0;top:0;bottom:0;background:var(--ai)}
-.budget .def{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,#A79D8C 0 4px,#C9BFAE 4px 8px)}
+.budget .def{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,#6E6A62 0 4px,#8E897F 4px 8px)}
 .budget .def.forced{background:var(--shu)}
 .budget .lim{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--sumi)}
 .budget-cap{font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between}
-.knee-svg{background:#E9E2D4;border-radius:3px;padding:6px 6px 4px;display:flex;flex-direction:column;gap:2px}
+.knee-svg{background:#15181E;border:1px solid var(--line);border-radius:3px;padding:6px 6px 4px;display:flex;flex-direction:column;gap:2px}
 .knee-svg svg{display:block;max-width:170px;margin:0 auto}
-.knee-svg svg rect,.knee-svg svg circle{stroke:#B3A790;stroke-width:1}
+.knee-svg svg rect,.knee-svg svg circle{stroke:#6E6A62;stroke-width:1}
 .knee-svg .cap{font-size:10.5px;color:var(--muted);text-align:center;line-height:1.4}
 .legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
@@ -148,7 +173,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,#c:focus-visible{outlin
 .text .tag{font-size:11px;font-weight:700;border-radius:2px;padding:1px 6px;margin-right:4px;white-space:nowrap}
 .tag.yes{background:var(--ok-bg);color:var(--ok)}
 .tag.no{background:var(--warn-bg);color:var(--warn)}
-.tag.model{background:#DCE3EA;color:var(--ai)}
+.tag.model{background:#1E2A38;color:var(--ai)}
 sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .qa{display:flex;flex-direction:column;gap:6px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:4px}
 .qa h3{font-size:16.5px;line-height:1.55}
@@ -162,8 +187,8 @@ sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .kneefig figcaption{font-size:12.5px;color:var(--muted);line-height:1.7}
 .spots{margin:0;padding-left:1.5em;display:flex;flex-direction:column;gap:8px}
 .spots b{color:var(--sumi)}
-.guidecard{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--sumi);border-left:4px solid var(--shu);border-radius:3px;background:var(--card);color:var(--sumi);text-decoration:none}
-.guidecard:hover{background:#F3EDE1}
+.guidecard{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid #4A4F5C;border-left:4px solid var(--shu);border-radius:3px;background:var(--card);color:var(--sumi);text-decoration:none}
+.guidecard:hover{background:var(--card2)}
 .guidecard .gk{font-size:11.5px;letter-spacing:.12em;color:var(--shu);font-weight:700}
 .guidecard .gt{font:700 17px/1.45 var(--font-mincho)}
 .guidecard .gd{font-size:13px;color:var(--muted);line-height:1.6}
@@ -177,7 +202,8 @@ sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .foot h2{font-size:17px}
 .foot ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
 /* 舞台の上の表示 */
-.overlay-top{position:absolute;left:12px;top:10px;right:12px;pointer-events:none;font-size:12px;color:rgba(237,230,214,.6)}
+.overlay-top{position:absolute;left:12px;top:10px;right:12px;pointer-events:none;font-size:12px;color:rgba(237,230,214,.75)}
+.overlay-top span{display:inline-block;background:rgba(13,16,23,.6);border:1px solid rgba(237,230,214,.18);border-radius:999px;padding:4px 11px}
 .cams{position:absolute;left:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 24px)}
 .cams .btn{font-size:12.5px;padding:7px 11px;min-height:38px;background:rgba(24,23,21,.78);color:#EDE6D6;border:1px solid rgba(237,230,214,.28)}
 .cams .btn:hover{border-color:#EDE6D6}
@@ -215,8 +241,9 @@ noscript p{padding:16px;color:#EDE6D6}
 @media (max-width:860px){
   html,body{height:auto}
   .app{flex-direction:column;height:auto}
-  .stage{position:sticky;top:0;height:44vh;min-height:280px;max-height:520px;flex:none;z-index:2;border-bottom:1px solid #3A352E}
+  .stage{position:sticky;top:0;height:44vh;min-height:280px;max-height:520px;flex:none;z-index:2;border-bottom:1px solid #262A33}
   .panel{flex:none;width:auto;border-left:none;padding:20px 16px 56px;gap:24px}
+  .hero{margin:-20px -16px 4px;height:130px}
   h1{font-size:25px}
   .lbl{font-size:10.5px;padding:2px 5px}
   .stage.cmp-tb{height:64vh;max-height:660px}
@@ -233,7 +260,7 @@ noscript p{padding:16px;color:#EDE6D6}
     <div id="labels"></div>
     <div class="cmptag a" id="cmpTagA">体の硬い初心者<small>外旋が少なく、腰が丸まりやすい</small></div>
     <div class="cmptag b" id="cmpTagB">熟練した人<small>股関節が大きく外へ回る</small></div>
-    <div class="overlay-top"><span>ドラッグで回転・ピンチ／ホイールで拡大</span></div>
+    <div class="overlay-top"><span>⟲ ドラッグで回転　・　二本指／ホイールで拡大</span></div>
     <div class="cams" role="group" aria-label="視点">
       <button class="btn" data-cam="front" aria-pressed="true">正面</button>
       <button class="btn" data-cam="top" aria-pressed="false">上から</button>
@@ -247,25 +274,109 @@ noscript p{padding:16px;color:#EDE6D6}
 
   <main class="panel">
     <header class="mast">
+      <div class="hero" aria-hidden="true">
+        <svg viewBox="0 0 460 180" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="hsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070910"/><stop offset=".62" stop-color="#151B28"/><stop offset="1" stop-color="#262E3E"/></linearGradient>
+            <radialGradient id="hmoon"><stop offset="0" stop-color="#E9E5DA" stop-opacity=".35"/><stop offset="1" stop-color="#E9E5DA" stop-opacity="0"/></radialGradient>
+            <linearGradient id="hsnow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C6CEDA"/><stop offset="1" stop-color="#7F8A9C"/></linearGradient>
+          </defs>
+          <rect width="460" height="180" fill="url(#hsky)"/>
+          <circle cx="362" cy="44" r="58" fill="url(#hmoon)"/>
+          <circle cx="362" cy="44" r="12.5" fill="#E9E5DA"/>
+          <g fill="#DDE3EC" opacity=".55"><circle cx="40" cy="22" r=".9"/><circle cx="96" cy="48" r=".7"/><circle cx="150" cy="16" r=".8"/><circle cx="214" cy="36" r=".6"/><circle cx="262" cy="14" r=".9"/><circle cx="420" cy="20" r=".7"/><circle cx="300" cy="62" r=".6"/></g>
+          <path d="M0 118 L34 100 L58 108 L96 80 L128 100 L160 92 L198 112 L236 90 L262 98 L300 74 L336 98 L378 86 L420 104 L460 94 L460 180 L0 180Z" fill="#232A39"/>
+          <path d="M96 80 L84 88 L92 87 L98 92 L104 87 L110 90Z M300 74 L288 83 L296 82 L302 87 L308 82 L313 85Z M236 90 L228 96 L240 95Z" fill="#8C97AA" opacity=".8"/>
+          <path d="M0 136 Q70 118 140 128 T280 124 T460 120 L460 180 L0 180Z" fill="#1A202C"/>
+          <path d="M0 150 Q115 138 230 146 T460 140 L460 180 L0 180Z" fill="url(#hsnow)"/>
+          <g fill="#0D1119">
+            <path d="M26 152 L36 116 L46 152Z M30 132 L36 108 L42 132Z"/><path d="M48 154 L56 126 L64 154Z"/>
+            <path d="M404 148 L414 112 L424 148Z M408 128 L414 104 L420 128Z"/><path d="M428 150 L436 122 L444 150Z"/>
+          </g>
+          <g fill="#C6CEDA" opacity=".85"><path d="M33 120 L36 116 L39 120Z"/><path d="M411 116 L414 112 L417 116Z"/></g>
+          <ellipse cx="290" cy="150" rx="22" ry="3.2" fill="#5D6879" opacity=".55"/>
+          <g fill="#0B0E15"><ellipse cx="290" cy="147.6" rx="13.5" ry="3.6"/><path d="M284.6 147 Q283.6 133 290 129.6 Q296.4 133 295.4 147Z"/><circle cx="290" cy="125.6" r="3.9"/></g>
+        </svg>
+        <div class="snow s1"></div><div class="snow s2"></div><div class="snow s3"></div>
+      </div>
       <div class="mast-row"><span class="seal" aria-hidden="true">膝</span><p class="kicker">坐禅をはじめる人のための教育用模型</p></div>
       <h1>坐禅の脚組み 3D模型<span>結跏趺坐・半跏趺坐で、膝を痛めない仕組み</span></h1>
       <p class="lead">股関節の「外旋」が足りないまま足を腿に乗せると、膝の内側では半月板が挟まれ、外側では靭帯が伸ばされます。実物の骨の形をもとにした模型を動かして、その仕組みを確かめられます。</p>
       <p class="notice">医療・解剖学の専門家ではない個人が、AIにほぼすべての作業を任せて作ったものです。内容の正確さは保証できません。詳しくは<a href="#disclaimer">免責事項</a>をご覧ください。</p>
-      <a class="guidecard" href="guide/"><span class="gk">スライド</span><span class="gt">膝を痛めないためのストレッチ・ガイド</span><span class="gd">体の硬い人が、坐禅のために股関節を少しずつ柔らかくする方法と注意点</span></a>
       <nav class="toc" aria-label="ページ内の目次">
         <a href="#controls">模型を動かす</a><a href="#gaisen">外旋とは</a><a href="#ugoki">動きの名前</a><a href="#shikumi">膝を痛める仕組み</a><a href="#basho">負担がかかる場所</a><a href="#kurabe">硬い人と熟練者</a><a href="guide/">ストレッチ・ガイド</a><a href="#taisaku">負担を減らす工夫</a><a href="#faq">よくある質問</a><a href="#sources">出典</a>
       </nav>
     </header>
+
+    <div class="howto" aria-label="使い方">
+      <span class="n">1</span><span><b>坐り方を選ぶ</b>：下の「① 坐り方を選ぶ」のボタンを押します。</span>
+      <span class="n">2</span><span><b>股関節の硬さを変える</b>：「②」のつまみを左右に動かします。左ほど硬い人です。</span>
+      <span class="n">3</span><span><b>膝の色を見る</b>：緑は膝が守られている、黄・赤は膝に負担。「右膝」「左膝」で近くから見られます。</span>
+      <span class="n">⟲</span><span>模型は<b>ドラッグで回転</b>、<b>二本指（ホイール）で拡大</b>できます。</span>
+    </div>
 
     <div class="status" id="status" data-level="ok" aria-live="polite">
       <div class="head" id="statusHead">計算しています…</div>
       <div class="body" id="statusBody"></div>
     </div>
 
+    <div class="group" id="postureGroup">
+      <div class="glabel" id="controls"><span class="step">1</span>坐り方を選ぶ</div>
+      <div class="seg" id="posture" role="group" aria-label="姿勢">
+        <button data-v="lotus" aria-pressed="true">結跏趺坐</button>
+        <button data-v="half" aria-pressed="false">半跏趺坐</button>
+        <button data-v="burmese" aria-pressed="false">ビルマ式</button>
+        <button data-v="agura" aria-pressed="false">あぐら</button>
+        <button data-v="seiza" aria-pressed="false">正座</button>
+      </div>
+      <p class="hint" id="postureNote"></p>
+    </div>
+
+    <div class="group" id="topGroup">
+      <div class="glabel" id="topLabel">上に乗る足</div>
+      <div class="seg" id="top" role="group" aria-label="上になる足">
+        <button data-v="R" aria-pressed="false">右足</button>
+        <button data-v="L" aria-pressed="true">左足</button>
+      </div>
+    </div>
+
+    <div class="group" id="erGroup">
+      <div class="glabel"><span class="step">2</span>股関節の硬さを変える（外旋の上限）</div>
+      <div class="slider"><label for="erR">右</label><input type="range" id="erR" min="0" max="130" step="1" value="45"><output id="erRv" for="erR">45°</output></div>
+      <div class="slider"><label for="erL">左</label><input type="range" id="erL" min="0" max="130" step="1" value="45"><output id="erLv" for="erL">45°</output></div>
+      <div class="ends" aria-hidden="true"><span></span><span><span>← 硬い</span><span>柔らかい →</span></span><span></span></div>
+      <div class="chips">
+        <button class="btn" data-er="120">十分 120°</button>
+        <button class="btn" data-er="80">やや柔らかい 80°</button>
+        <button class="btn" data-er="45">参考可動域 45°</button>
+        <button class="btn" data-er="30">硬め 30°</button>
+        <button class="btn" id="animBtn">▶ だんだん硬くする（120°→20°）</button>
+      </div>
+      <p class="hint">45°は日本整形外科学会などの参考可動域（仰向けで股・膝を90°曲げて測る値）<sup>［5］</sup>。この模型の角度の取り方とは測り方が同じではありません。</p>
+    </div>
+
+    <div class="group" id="modeGroup">
+      <div class="glabel"><span class="step">3</span>足の乗せ方を選ぶ</div>
+      <div class="seg" id="mode" role="group" aria-label="足の乗せ方">
+        <button data-v="hinge" aria-pressed="false">股関節の範囲で止める</button>
+        <button data-v="forced" aria-pressed="true">手で引き上げて乗せる</button>
+      </div>
+      <p class="hint" id="modeNote"></p>
+    </div>
+
+    <div class="group" id="seatGroup">
+      <div class="glabel"><span class="step">4</span>坐蒲の高さ・骨盤の傾き</div>
+      <div class="slider"><label for="cush">坐蒲</label><input type="range" id="cush" min="0" max="20" step="1" value="8"><output id="cushv" for="cush">8 cm</output></div>
+      <div class="ends" aria-hidden="true"><span></span><span><span>← 低い</span><span>高い →</span></span><span></span></div>
+      <div class="slider"><label for="tilt">骨盤</label><input type="range" id="tilt" min="-20" max="25" step="1" value="5"><output id="tiltv" for="tilt">前傾5°</output></div>
+      <div class="ends" aria-hidden="true"><span></span><span><span>← 腰が丸まる</span><span>腰が立つ →</span></span><span></span></div>
+      <p class="hint">坐蒲の高さは坐骨の下の厚みです。骨盤は左へ動かすと後ろへ傾き（腰が丸まる）、右へ動かすと前へ傾きます（腰が立つ）。</p>
+    </div>
+
     <div class="group cmp-g" id="cmpGroup">
       <div class="glabel">見比べる：体の硬い人と、熟練した人</div>
       <p class="hint">同じ坐り方を、左（スマホでは上）に体の硬い初心者、右（下）に熟練した人で並べます。視点を回すと両方が同時に動きます。「右膝」「左膝」で膝を近くから比べられます。</p>
-      <div class="seg"><button id="cmpOn" aria-pressed="false">二人を並べて見比べる</button></div>
+      <div class="seg"><button id="cmpOn" class="primary" aria-pressed="false">⇆ 二人を並べて見比べる</button></div>
       <div id="cmpBody">
         <div class="glabel" style="margin-top:4px">初心者の硬さ（股関節の外旋の上限）</div>
         <div class="seg" id="cmpStiff" role="group" aria-label="初心者の硬さ">
@@ -295,61 +406,11 @@ noscript p{padding:16px;color:#EDE6D6}
       </div>
       <div class="slider" id="demoSlider"><label for="demoER" id="demoERlabel">回す</label><input type="range" id="demoER" min="-40" max="120" step="1" value="0"><output id="demoERv" for="demoER">0°</output></div>
       <div class="chips" id="demoChips">
-        <button class="btn" id="demoPlay">動かして見る</button>
+        <button class="btn" id="demoPlay">▶ 動かして見る</button>
         <button class="btn" data-dv="45">45°（参考可動域）</button>
         <button class="btn" data-dv="-30">内旋 30°</button>
-        <button class="btn" id="demoExit">坐禅の模型に戻る</button>
+        <button class="btn" id="demoExit">↩ 坐禅の模型に戻る</button>
       </div>
-    </div>
-
-    <div class="group" id="postureGroup">
-      <div class="glabel" id="controls">姿勢</div>
-      <div class="seg" id="posture" role="group" aria-label="姿勢">
-        <button data-v="lotus" aria-pressed="true">結跏趺坐</button>
-        <button data-v="half" aria-pressed="false">半跏趺坐</button>
-        <button data-v="burmese" aria-pressed="false">ビルマ式</button>
-        <button data-v="agura" aria-pressed="false">あぐら</button>
-        <button data-v="seiza" aria-pressed="false">正座</button>
-      </div>
-      <p class="hint" id="postureNote"></p>
-    </div>
-
-    <div class="group" id="topGroup">
-      <div class="glabel" id="topLabel">上に乗る足</div>
-      <div class="seg" id="top" role="group" aria-label="上になる足">
-        <button data-v="R" aria-pressed="false">右足</button>
-        <button data-v="L" aria-pressed="true">左足</button>
-      </div>
-    </div>
-
-    <div class="group" id="modeGroup">
-      <div class="glabel">足の乗せ方</div>
-      <div class="seg" id="mode" role="group" aria-label="足の乗せ方">
-        <button data-v="hinge" aria-pressed="false">股関節の範囲で止める</button>
-        <button data-v="forced" aria-pressed="true">手で引き上げて乗せる</button>
-      </div>
-      <p class="hint" id="modeNote"></p>
-    </div>
-
-    <div class="group" id="erGroup">
-      <div class="glabel">股関節の外旋の上限（その人の可動域）</div>
-      <div class="slider"><label for="erR">右</label><input type="range" id="erR" min="0" max="130" step="1" value="45"><output id="erRv" for="erR">45°</output></div>
-      <div class="slider"><label for="erL">左</label><input type="range" id="erL" min="0" max="130" step="1" value="45"><output id="erLv" for="erL">45°</output></div>
-      <div class="chips">
-        <button class="btn" data-er="120">十分 120°</button>
-        <button class="btn" data-er="80">やや柔らかい 80°</button>
-        <button class="btn" data-er="45">参考可動域 45°</button>
-        <button class="btn" data-er="30">硬め 30°</button>
-        <button class="btn" id="animBtn">120°→20°へ動かす</button>
-      </div>
-      <p class="hint">45°は日本整形外科学会などの参考可動域（仰向けで股・膝を90°曲げて測る値）<sup>［5］</sup>。この模型の角度の取り方とは測り方が同じではありません。</p>
-    </div>
-
-    <div class="group" id="seatGroup">
-      <div class="glabel">坐る台と骨盤</div>
-      <div class="slider"><label for="cush">坐蒲</label><input type="range" id="cush" min="0" max="20" step="1" value="8"><output id="cushv" for="cush">8 cm</output></div>
-      <div class="slider"><label for="tilt">骨盤</label><input type="range" id="tilt" min="-20" max="25" step="1" value="5"><output id="tiltv" for="tilt">前傾5°</output></div>
-      <p class="hint">骨盤は左が後傾（腰が丸まる）、右が前傾（腰が立つ）。坐蒲の高さは坐骨の下の厚みです。</p>
     </div>
 
     <div class="group">
@@ -358,6 +419,7 @@ noscript p{padding:16px;color:#EDE6D6}
         <label><input type="checkbox" id="chkFlesh" checked> 肉付け</label>
         <label><input type="checkbox" id="chkLabels" checked> 角度ラベル</label>
         <label><input type="checkbox" id="chkGhost" checked> 膝を守った場合の脚（青い影）</label>
+        <label><input type="checkbox" id="chkSnow" checked> 雪を降らせる</label>
       </div>
       <div class="legend">
         <span><i style="background:#7FA36B"></i>膝は蝶番のまま</span>
@@ -376,6 +438,8 @@ noscript p{padding:16px;color:#EDE6D6}
         <span><i style="background:var(--sumi);width:2px"></i>上限</span>
       </div>
     </div>
+
+    <a class="guidecard" href="guide/"><span class="gk">スライド</span><span class="gt">膝を痛めないためのストレッチ・ガイド</span><span class="gd">体の硬い人が、坐禅のために股関節を少しずつ柔らかくする方法と注意点</span></a>
 
     <article class="text">
       <h2 id="gaisen"><span class="num">一</span>外旋とは</h2>
@@ -407,37 +471,37 @@ noscript p{padding:16px;color:#EDE6D6}
       <figure class="kneefig">
         <svg viewBox="0 0 360 300" role="img" aria-labelledby="kneefigT">
           <title id="kneefigT">右膝を前から見た模式図。膝が内側へ折れると、内側では半月板と軟骨が挟まれ、外側では外側側副靭帯が引き伸ばされる。</title>
-          <g font-size="12" fill="#6F675B"><text x="14" y="18">外側</text><text x="346" y="18" text-anchor="end">内側</text></g>
-          <rect x="160" y="0" width="40" height="96" fill="#EFE7D6" stroke="#B8AD98"/>
-          <circle cx="150" cy="110" r="30" fill="#EFE7D6" stroke="#B8AD98"/>
-          <circle cx="212" cy="110" r="32" fill="#EFE7D6" stroke="#B8AD98"/>
-          <path d="M122 118 Q150 146 178 118" fill="none" stroke="#9FB8D3" stroke-width="5" stroke-linecap="round"/>
-          <path d="M182 118 Q212 150 242 118" fill="none" stroke="#9FB8D3" stroke-width="5" stroke-linecap="round"/>
+          <g font-size="12" fill="#A39C90"><text x="14" y="18">外側</text><text x="346" y="18" text-anchor="end">内側</text></g>
+          <rect x="160" y="0" width="40" height="96" fill="#CFC6B4" stroke="#77726A"/>
+          <circle cx="150" cy="110" r="30" fill="#CFC6B4" stroke="#77726A"/>
+          <circle cx="212" cy="110" r="32" fill="#CFC6B4" stroke="#77726A"/>
+          <path d="M122 118 Q150 146 178 118" fill="none" stroke="#7FA0C4" stroke-width="5" stroke-linecap="round"/>
+          <path d="M182 118 Q212 150 242 118" fill="none" stroke="#7FA0C4" stroke-width="5" stroke-linecap="round"/>
           <g transform="rotate(-9 212 148)">
-            <rect x="118" y="150" width="128" height="16" rx="4" fill="#EFE7D6" stroke="#B8AD98"/>
-            <rect x="160" y="166" width="40" height="140" fill="#EFE7D6" stroke="#B8AD98"/>
-            <circle cx="124" cy="182" r="9" fill="#EFE7D6" stroke="#B8AD98"/>
-            <rect x="119" y="190" width="10" height="120" fill="#EFE7D6" stroke="#B8AD98"/>
+            <rect x="118" y="150" width="128" height="16" rx="4" fill="#CFC6B4" stroke="#77726A"/>
+            <rect x="160" y="166" width="40" height="140" fill="#CFC6B4" stroke="#77726A"/>
+            <circle cx="124" cy="182" r="9" fill="#CFC6B4" stroke="#77726A"/>
+            <rect x="119" y="190" width="10" height="120" fill="#CFC6B4" stroke="#77726A"/>
             <ellipse cx="150" cy="146" rx="26" ry="5.5" fill="#7FA36B"/>
-            <ellipse cx="212" cy="147" rx="28" ry="3" fill="#B23A28"/>
+            <ellipse cx="212" cy="147" rx="28" ry="3" fill="#E07A5F"/>
           </g>
-          <line x1="122" y1="104" x2="130" y2="186" stroke="#C48A18" stroke-width="5" stroke-linecap="round"/>
-          <line x1="244" y1="104" x2="252" y2="194" stroke="#A79D8C" stroke-width="3" stroke-linecap="round"/>
-          <g stroke="#B23A28" stroke-width="3" fill="#B23A28">
+          <line x1="122" y1="104" x2="130" y2="186" stroke="#E2B65C" stroke-width="5" stroke-linecap="round"/>
+          <line x1="244" y1="104" x2="252" y2="194" stroke="#77726A" stroke-width="3" stroke-linecap="round"/>
+          <g stroke="#E07A5F" stroke-width="3" fill="#E07A5F">
             <line x1="282" y1="108" x2="282" y2="132"/><path d="M276 128 L282 138 L288 128 Z" stroke="none"/>
             <line x1="282" y1="186" x2="282" y2="162"/><path d="M276 166 L282 156 L288 166 Z" stroke="none"/>
           </g>
-          <g stroke="#C48A18" stroke-width="3" fill="#C48A18">
+          <g stroke="#E2B65C" stroke-width="3" fill="#E2B65C">
             <line x1="96" y1="146" x2="96" y2="118"/><path d="M90 122 L96 112 L102 122 Z" stroke="none"/>
             <line x1="96" y1="160" x2="96" y2="188"/><path d="M90 184 L96 194 L102 184 Z" stroke="none"/>
           </g>
-          <path d="M150 252 A40 11 0 0 0 226 256" fill="none" stroke="#2F4B6E" stroke-width="3"/>
-          <path d="M220 249 L230 257 L218 262 Z" fill="#2F4B6E"/>
-          <g font-size="11.5" fill="#6F675B"><text x="206" y="40">大腿骨</text><text x="206" y="290">脛骨</text><text x="84" y="290">腓骨</text></g>
-          <g font-size="12" font-weight="700" fill="#24211D" text-anchor="middle">
-            <line x1="252" y1="146" x2="306" y2="146" stroke="#B23A28" stroke-width="1.5"/><circle cx="318" cy="146" r="12" fill="#F8F4EB" stroke="#B23A28" stroke-width="2"/><text x="318" y="150">1</text>
-            <line x1="56" y1="150" x2="124" y2="150" stroke="#C48A18" stroke-width="1.5"/><circle cx="44" cy="150" r="12" fill="#F8F4EB" stroke="#C48A18" stroke-width="2"/><text x="44" y="154">2</text>
-            <circle cx="252" cy="270" r="12" fill="#F8F4EB" stroke="#2F4B6E" stroke-width="2"/><text x="252" y="274">3</text>
+          <path d="M150 252 A40 11 0 0 0 226 256" fill="none" stroke="#9DB8DA" stroke-width="3"/>
+          <path d="M220 249 L230 257 L218 262 Z" fill="#9DB8DA"/>
+          <g font-size="11.5" fill="#A39C90"><text x="206" y="40">大腿骨</text><text x="206" y="290">脛骨</text><text x="84" y="290">腓骨</text></g>
+          <g font-size="12" font-weight="700" fill="#ECE6D8" text-anchor="middle">
+            <line x1="252" y1="146" x2="306" y2="146" stroke="#E07A5F" stroke-width="1.5"/><circle cx="318" cy="146" r="12" fill="#1A1D24" stroke="#E07A5F" stroke-width="2"/><text x="318" y="150">1</text>
+            <line x1="56" y1="150" x2="124" y2="150" stroke="#E2B65C" stroke-width="1.5"/><circle cx="44" cy="150" r="12" fill="#1A1D24" stroke="#E2B65C" stroke-width="2"/><text x="44" y="154">2</text>
+            <circle cx="252" cy="270" r="12" fill="#1A1D24" stroke="#9DB8DA" stroke-width="2"/><text x="252" y="274">3</text>
           </g>
         </svg>
         <figcaption>右膝を前から見た模式図。膝が内側へ折れた（内反）とき。赤い矢印＝押しつぶす力、黄色の矢印＝引き伸ばす力。</figcaption>

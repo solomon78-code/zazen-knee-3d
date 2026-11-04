@@ -36,13 +36,14 @@
 @font-face{font-family:"Shippori Mincho";src:url(../assets/fonts/shippori-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Shippori Mincho";src:url(../assets/fonts/shippori-700.woff2) format("woff2");font-weight:700;font-display:swap}
 :root{
-  --washi:#F1ECE2; --card:#F8F4EB; --sumi:#24211D; --text:#3D3830; --muted:#6F675B; --line:#CFC5B3;
-  --shu:#B23A28; --ai:#2F4B6E; --warn:#8A5D0C; --ok:#4F7040;
+  --washi:#12141A; --card:#1A1D24; --card2:#20242C; --sumi:#ECE6D8; --text:#CFC8BA; --muted:#9D978C; --line:#343844;
+  --shu:#E07A5F; --ai:#9DB8DA; --warn:#E2B65C; --ok:#9CC18A;
+  color-scheme:dark;
   --font-mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
   --font-gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;
 }
 *{box-sizing:border-box}
-html{background:#E7E0D3}
+html{background:#0B0D12}
 body{margin:0;font-family:var(--font-gothic);color:var(--text);line-height:1.7;-webkit-text-size-adjust:100%}
 a{color:var(--ai)}
 .bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px 18px;background:rgba(24,23,21,.94);color:#EDE6D6;font-size:13.5px}
@@ -55,7 +56,7 @@ a{color:var(--ai)}
 .toc ol{margin:0;padding-left:1.6em;columns:2;column-gap:28px;font-size:14px}
 .toc li{break-inside:avoid;padding:2px 0}
 /* スライド本体：16:9、文字は幅に合わせて伸縮 */
-.slide{position:relative;aspect-ratio:16/9;container-type:inline-size;overflow:hidden;background:var(--washi);background-image:radial-gradient(rgba(36,33,29,.05) 1px,transparent 1px);background-size:6px 6px;border:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.04),0 10px 30px -18px rgba(36,33,29,.45);border-radius:3px}
+.slide{position:relative;aspect-ratio:16/9;container-type:inline-size;overflow:hidden;background:var(--washi);background-image:radial-gradient(rgba(220,228,240,.03) 1px,transparent 1px);background-size:6px 6px;border:1px solid var(--line);box-shadow:0 14px 34px -20px rgba(0,0,0,.9);border-radius:3px}
 .in{position:absolute;inset:0;padding:4.2cqw 5.2cqw 4.6cqw;display:flex;flex-direction:column;gap:1.6cqw;font-size:1.72cqw;line-height:1.72}
 .no{position:absolute;right:2.4cqw;bottom:1.6cqw;font:400 1.15cqw/1 var(--font-mincho);color:var(--muted);letter-spacing:.08em}
 .kick{font:700 1.2cqw/1.4 var(--font-gothic);letter-spacing:.18em;color:var(--shu)}
@@ -68,19 +69,22 @@ sup{font-size:.62em;color:var(--ai);vertical-align:super;line-height:0}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw;flex:1;min-height:0}
 .grid2.g3{grid-template-columns:1fr 1fr 1fr}
 .grid2.tight{flex:none}
-.g-pic.wide{grid-template-columns:38% 1fr}
-.g-pic{display:grid;grid-template-columns:34% 1fr;gap:3cqw;flex:1;min-height:0;align-items:start}
+.g-pic.wide{grid-template-columns:50% 1fr}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:1cqw}
+.tight4{gap:1.1cqw}.tight4 .card{padding:1cqw 1.4cqw;gap:.4cqw}.tight4 .card ul{gap:.2cqw}.tight4 .pict{padding:.6cqw;gap:.3cqw}
+.g-pic{display:grid;grid-template-columns:44% 1fr;gap:2.6cqw;flex:1;min-height:0;align-items:start}
 .card{background:var(--card);border:1px solid var(--line);border-radius:.4cqw;padding:1.6cqw 1.9cqw;display:flex;flex-direction:column;gap:.8cqw}
 .card h3{margin:0;font:700 1.95cqw/1.4 var(--font-mincho);color:var(--sumi)}
-.card.a{border-top:.45cqw solid var(--shu)}.card.b{border-top:.45cqw solid #5E7F4A}
+.card.a{border-top:.45cqw solid var(--shu)}.card.b{border-top:.45cqw solid #8FB57B}
 .note{font-size:1.38cqw;color:var(--muted);line-height:1.65}
-.warnbox{border-left:.45cqw solid var(--shu);background:#F3E7DD;padding:1cqw 1.5cqw;font-size:1.5cqw}
+.warnbox{border-left:.45cqw solid var(--shu);background:#2A1D19;padding:1cqw 1.5cqw;font-size:1.5cqw}
 .pict{background:var(--card);border:1px solid var(--line);border-radius:.4cqw;padding:1cqw;display:flex;flex-direction:column;gap:.6cqw}
-.pict svg{width:100%;height:auto;display:block}
+.pict svg,.pict img{width:100%;height:auto;display:block;border-radius:.3cqw}
+.pict{background:#0D1017}
 .pict .cap{font-size:1.25cqw;color:var(--muted);line-height:1.5}
 .steps{counter-reset:s;list-style:none;padding:0 !important}
 .steps li{counter-increment:s;position:relative;padding-left:2.6cqw}
-.steps li::before{content:counter(s);position:absolute;left:0;top:.35cqw;width:1.9cqw;height:1.9cqw;border-radius:50%;background:var(--sumi);color:var(--washi);font:700 1.15cqw/1.9cqw var(--font-gothic);text-align:center}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.35cqw;width:1.9cqw;height:1.9cqw;border-radius:50%;background:var(--shu);color:#12141A;font:700 1.15cqw/1.9cqw var(--font-gothic);text-align:center}
 .meta{display:flex;flex-wrap:wrap;gap:.8cqw}
 .meta span{font-size:1.3cqw;border:1px solid var(--line);border-radius:3cqw;padding:.2cqw 1.1cqw;background:var(--card)}
 .meta span b{color:var(--shu)}
@@ -88,7 +92,7 @@ sup{font-size:.62em;color:var(--ai);vertical-align:super;line-height:0}
 .ladder{display:flex;gap:.8cqw;align-items:stretch}
 .ladder div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:.4cqw;padding:1.1cqw;font-size:1.4cqw;line-height:1.55;display:flex;flex-direction:column;gap:.4cqw}
 .ladder div b{font:700 1.7cqw/1.35 var(--font-mincho)}
-.ladder div:nth-child(1){border-top:.45cqw solid #A79D8C}.ladder div:nth-child(2){border-top:.45cqw solid #8C9A72}.ladder div:nth-child(3){border-top:.45cqw solid #6E8A5A}.ladder div:nth-child(4){border-top:.45cqw solid #A8740F}.ladder div:nth-child(5){border-top:.45cqw solid var(--shu)}
+.ladder div:nth-child(1){border-top:.45cqw solid #8C98A8}.ladder div:nth-child(2){border-top:.45cqw solid #9CB08A}.ladder div:nth-child(3){border-top:.45cqw solid #8FB57B}.ladder div:nth-child(4){border-top:.45cqw solid var(--warn)}.ladder div:nth-child(5){border-top:.45cqw solid var(--shu)}
 table.menu{width:100%;border-collapse:collapse;font-size:1.5cqw}
 table.menu th,table.menu td{border-bottom:1px solid var(--line);padding:.6cqw .8cqw;text-align:left;vertical-align:top}
 table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);border-bottom:2px solid var(--sumi)}
@@ -101,7 +105,15 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
 .cover h1{margin:0;font:700 5.2cqw/1.3 var(--font-mincho);color:var(--sumi)}
 .cover .sub{font:400 2.2cqw/1.6 var(--font-mincho);color:var(--text)}
 .cover .disc{font-size:1.3cqw;color:var(--muted);max-width:60cqw}
-.enso{position:absolute;right:6cqw;top:50%;width:30cqw;height:30cqw;transform:translateY(-50%);opacity:.9}
+.cover{background:#070910}
+.cover .scene{position:absolute;inset:0;width:100%;height:100%}
+.cover .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,16,.92) 0%,rgba(7,9,16,.7) 46%,rgba(7,9,16,0) 72%)}
+.cover .in{z-index:1}
+.snow{position:absolute;left:0;right:0;top:-12cqw;bottom:0;pointer-events:none;background-repeat:repeat}
+.snow.s1{background-image:radial-gradient(.18cqw .18cqw at 12% 20%,#fff 50%,transparent),radial-gradient(.14cqw .14cqw at 60% 46%,#fff 50%,transparent),radial-gradient(.16cqw .16cqw at 84% 78%,#fff 50%,transparent),radial-gradient(.12cqw .12cqw at 36% 70%,#fff 50%,transparent);background-size:12cqw 12cqw;opacity:.7;animation:gsnow 18s linear infinite}
+.snow.s2{background-image:radial-gradient(.24cqw .24cqw at 20% 30%,#fff 50%,transparent),radial-gradient(.2cqw .2cqw at 74% 10%,#fff 50%,transparent),radial-gradient(.22cqw .22cqw at 48% 76%,#fff 50%,transparent);background-size:12cqw 12cqw;opacity:.5;animation:gsnow 12s linear infinite}
+@keyframes gsnow{from{transform:translate3d(0,0,0)}to{transform:translate3d(-1cqw,12cqw,0)}}
+@media (prefers-reduced-motion:reduce){.snow{animation:none}}
 .foot{max-width:1120px;margin:0 auto;padding:0 18px 50px;font-size:13px;color:var(--muted);line-height:1.85}
 .foot h2{font:700 16px/1.5 var(--font-mincho);color:var(--sumi);margin:0 0 4px}
 /* 幅の狭い画面では、スライドを読みやすいカードに組み替える */
@@ -121,7 +133,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
   .card.a,.card.b{border-top-width:3px}
   .note{font-size:13px}
   .warnbox{font-size:14px;padding:10px 12px;border-left-width:3px}
-  .pict{padding:10px;max-width:420px}
+  .pict{padding:8px;max-width:560px}
+  .duo{gap:8px}
   .pict .cap{font-size:12px}
   .steps li{padding-left:28px}
   .steps li::before{width:20px;height:20px;font-size:12px;line-height:20px;top:4px}
@@ -138,11 +151,16 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
   .cover h1{font-size:30px}
   .cover .sub{font-size:17px}
   .cover .disc{font-size:12.5px;max-width:none}
-  .enso{position:static;transform:none;width:120px;height:120px;align-self:flex-end;margin-top:-10px}
+  .cover{min-height:520px}
+  .cover .shade{background:linear-gradient(180deg,rgba(7,9,16,.25) 0%,rgba(7,9,16,.85) 55%,rgba(7,9,16,.95) 100%)}
+  .cover .in{position:relative;padding-top:180px}
+  .snow{top:-120px}
+  .snow.s1,.snow.s2{background-size:120px 120px}
 }
 @media print{
   @page{size:320mm 180mm;margin:0}
-  html,body{background:#fff}
+  html,body{background:#12141A;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .snow{display:none}
   .bar,.toc,.foot{display:none}
   .deck{max-width:none;padding:0;gap:0}
   .slide{width:320mm;height:180mm;aspect-ratio:auto;border:none;box-shadow:none;border-radius:0;break-after:page;page-break-after:always}
@@ -181,6 +199,25 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
 
   <!-- 1 表紙 -->
   <section class="slide cover" id="s1" aria-label="表紙">
+    <svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05070C"/><stop offset=".6" stop-color="#131A27"/><stop offset="1" stop-color="#28303F"/></linearGradient>
+        <radialGradient id="gmoon"><stop offset="0" stop-color="#E9E5DA" stop-opacity=".3"/><stop offset="1" stop-color="#E9E5DA" stop-opacity="0"/></radialGradient>
+        <linearGradient id="gsnowf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C6CEDA"/><stop offset="1" stop-color="#6F7A8C"/></linearGradient>
+      </defs>
+      <rect width="1600" height="900" fill="url(#gsky)"/>
+      <circle cx="1270" cy="190" r="240" fill="url(#gmoon)"/><circle cx="1270" cy="190" r="46" fill="#E9E5DA"/>
+      <g fill="#DDE3EC" opacity=".5"><circle cx="980" cy="80" r="2"/><circle cx="1100" cy="300" r="1.6"/><circle cx="1480" cy="110" r="2"/><circle cx="1400" cy="360" r="1.4"/><circle cx="880" cy="230" r="1.4"/><circle cx="1540" cy="260" r="1.6"/></g>
+      <path d="M0 600 L120 520 L210 560 L340 430 L450 520 L560 480 L690 580 L820 470 L910 510 L1040 380 L1170 500 L1310 440 L1460 530 L1600 470 L1600 900 L0 900Z" fill="#212837"/>
+      <path d="M1040 380 L998 420 L1026 416 L1046 436 L1066 414 L1084 424Z M340 430 L302 466 L330 462 L348 478 L368 460Z M820 470 L790 494 L834 490Z" fill="#8C97AA" opacity=".75"/>
+      <path d="M0 690 Q250 610 500 650 T1000 630 T1600 600 L1600 900 L0 900Z" fill="#181E2A"/>
+      <path d="M0 760 Q400 700 800 735 T1600 705 L1600 900 L0 900Z" fill="url(#gsnowf)"/>
+      <g fill="#0B0F17"><path d="M1420 750 L1452 600 L1484 750Z M1434 680 L1452 572 L1470 680Z"/><path d="M1500 760 L1526 640 L1552 760Z"/><path d="M80 770 L108 650 L136 770Z"/></g>
+      <ellipse cx="1180" cy="752" rx="70" ry="9" fill="#55606F" opacity=".55"/>
+      <g fill="#0A0D14"><ellipse cx="1180" cy="744" rx="44" ry="11"/><path d="M1162 743 Q1159 696 1180 684 Q1201 696 1198 743Z"/><circle cx="1180" cy="671" r="13"/></g>
+    </svg>
+    <div class="shade"></div>
+    <div class="snow s1" aria-hidden="true"></div><div class="snow s2" aria-hidden="true"></div>
     <div class="in">
       <div class="seal" aria-hidden="true">膝</div>
       <p class="kick">坐禅をはじめる人のための</p>
@@ -188,7 +225,6 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <p class="sub">体が硬くても大丈夫。<br>ほどくのは膝ではなく、股関節です。</p>
       <p class="disc">医療・解剖学の専門家ではない個人が、AIにほぼすべての作業を任せて作った資料です。内容の正確さは保証できません。痛みや持病のある方は、医師・理学療法士にご相談ください。</p>
     </div>
-    <svg class="enso" viewBox="0 0 200 200" aria-hidden="true"><path d="M128 32C104 20 70 24 50 44 26 68 24 108 44 136 66 166 112 176 142 158 170 140 180 104 166 76" fill="none" stroke="#24211D" stroke-width="13" stroke-linecap="round" opacity=".88"/><circle cx="150" cy="44" r="9" fill="#B23A28"/></svg>
     <span class="no">1 / 16</span>
   </section>
 
@@ -214,29 +250,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <h2 id="s3h">股関節が足りないと、膝のどこが傷むのか</h2>
       <div class="g-pic wide">
         <div class="pict">
-          <svg viewBox="0 0 360 300" role="img" aria-label="右膝を前から見た模式図。内側で半月板が挟まれ、外側で外側側副靭帯が引き伸ばされる">
-            <g font-size="13" fill="#6F675B"><text x="14" y="18">外側</text><text x="346" y="18" text-anchor="end">内側</text></g>
-            <rect x="160" y="0" width="40" height="96" fill="#EFE7D6" stroke="#B8AD98"/>
-            <circle cx="150" cy="110" r="30" fill="#EFE7D6" stroke="#B8AD98"/><circle cx="212" cy="110" r="32" fill="#EFE7D6" stroke="#B8AD98"/>
-            <path d="M122 118 Q150 146 178 118" fill="none" stroke="#9FB8D3" stroke-width="5" stroke-linecap="round"/><path d="M182 118 Q212 150 242 118" fill="none" stroke="#9FB8D3" stroke-width="5" stroke-linecap="round"/>
-            <g transform="rotate(-9 212 148)">
-              <rect x="118" y="150" width="128" height="16" rx="4" fill="#EFE7D6" stroke="#B8AD98"/><rect x="160" y="166" width="40" height="140" fill="#EFE7D6" stroke="#B8AD98"/>
-              <circle cx="124" cy="182" r="9" fill="#EFE7D6" stroke="#B8AD98"/><rect x="119" y="190" width="10" height="120" fill="#EFE7D6" stroke="#B8AD98"/>
-              <ellipse cx="150" cy="146" rx="26" ry="5.5" fill="#7FA36B"/><ellipse cx="212" cy="147" rx="28" ry="3" fill="#B23A28"/>
-            </g>
-            <line x1="122" y1="104" x2="130" y2="186" stroke="#C48A18" stroke-width="5" stroke-linecap="round"/>
-            <line x1="244" y1="104" x2="252" y2="194" stroke="#A79D8C" stroke-width="3" stroke-linecap="round"/>
-            <g stroke="#B23A28" stroke-width="3" fill="#B23A28"><line x1="282" y1="108" x2="282" y2="132"/><path d="M276 128 L282 138 L288 128 Z" stroke="none"/><line x1="282" y1="186" x2="282" y2="162"/><path d="M276 166 L282 156 L288 166 Z" stroke="none"/></g>
-            <g stroke="#C48A18" stroke-width="3" fill="#C48A18"><line x1="96" y1="146" x2="96" y2="118"/><path d="M90 122 L96 112 L102 122 Z" stroke="none"/><line x1="96" y1="160" x2="96" y2="188"/><path d="M90 184 L96 194 L102 184 Z" stroke="none"/></g>
-            <path d="M150 252 A40 11 0 0 0 226 256" fill="none" stroke="#2F4B6E" stroke-width="3"/><path d="M220 249 L230 257 L218 262 Z" fill="#2F4B6E"/>
-            <g font-size="12" fill="#6F675B"><text x="206" y="40">大腿骨</text><text x="206" y="290">脛骨</text><text x="84" y="290">腓骨</text></g>
-            <g font-size="13" font-weight="700" fill="#24211D" text-anchor="middle">
-              <line x1="252" y1="146" x2="306" y2="146" stroke="#B23A28" stroke-width="1.5"/><circle cx="318" cy="146" r="12" fill="#F8F4EB" stroke="#B23A28" stroke-width="2"/><text x="318" y="150">1</text>
-              <line x1="56" y1="150" x2="124" y2="150" stroke="#C48A18" stroke-width="1.5"/><circle cx="44" cy="150" r="12" fill="#F8F4EB" stroke="#C48A18" stroke-width="2"/><text x="44" y="154">2</text>
-              <circle cx="252" cy="270" r="12" fill="#F8F4EB" stroke="#2F4B6E" stroke-width="2"/><text x="252" y="274">3</text>
-            </g>
-          </svg>
-          <p class="cap">右膝を前から見た図。膝が内側へ折れた（内反）とき。</p>
+          <img src="img/lotus_labels.webp" width="980" height="690" alt="3D模型で、外旋の上限30°の人が結跏趺坐に足を引き上げた状態。右膝に「内側半月板：挟まれる」「外側側副靭帯：伸ばされる」の札が出ている" loading="lazy">
+          <p class="cap">3D模型の画面（外旋の上限30°の人が、足を手で引き上げて結跏趺坐を組んだ場合）。赤く光る膝ほど負担が大きい。</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.2cqw">
           <p>外旋が足りないまま足首を引き上げると、足りない分を膝が横に折れたり、ねじれたりして補います<sup>［1］</sup>。</p>
@@ -245,7 +260,7 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
             <li><b>外側側副靭帯</b>：膝の外側が開いて、引き伸ばされる<sup>［1］［2］</sup>。</li>
             <li><b>ねじれ</b>：曲げた膝ですねをひねると、半月板が裂けたり、軟骨が傷んだりすることがある<sup>［3］</sup>。</li>
           </ol>
-          <p class="warnbox">膝の<b>内側がつまる</b>感じは①、<b>外側が張る</b>感じは②の合図です。</p>
+          <p class="warnbox">膝の<b>内側がつまる</b>感じは①、<b>外側が張る</b>感じは②の合図です。模型の「右膝」「左膝」で、近くから名前つきで見られます。</p>
         </div>
       </div>
     </div>
@@ -254,24 +269,25 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
 
   <!-- 4 硬い人と熟練者 -->
   <section class="slide" id="s4" aria-labelledby="s4h">
-    <div class="in">
+    <div class="in tight4">
       <p class="kick">見比べる</p>
       <h2 id="s4h">体の硬い人と、熟練した人の違い</h2>
-      <div class="grid2">
+      <div class="duo">
+        <div class="pict"><img src="img/compare_full.webp" width="1200" height="600" alt="3D模型の見比べ表示。左の初心者は両膝が赤く横に折れ、右の熟練者は膝が緑のまま" loading="lazy"><p class="cap">同じ結跏趺坐。左＝硬い初心者、右＝熟練した人（<a href="../#mikurabe">3D模型で見比べる</a>）</p></div>
+        <div class="pict"><img src="img/compare_knee.webp" width="1200" height="600" alt="右膝を近くから見比べた画面。初心者は内側半月板が挟まれ、熟練者は膝が蝶番のまま" loading="lazy"><p class="cap">右膝を近くから。左は内側が挟まれ、右は蝶番のまま</p></div>
+      </div>
+      <div class="grid2 tight">
         <div class="card a"><h3>体の硬い初心者</h3>
           <ul>
-            <li>股関節の外旋が少なく、膝が床から浮く</li>
-            <li>坐蒲が低いと腰が丸まりやすい</li>
-            <li>足首を持って引き上げると、膝が横に折れ、ねじれる。内側半月板が挟まれ、外側の靭帯が伸ばされる<sup>［1］</sup></li>
+            <li>外旋が少なく、膝が床から浮く。坐蒲が低いと腰が丸まりやすい</li>
+            <li>足首を引き上げると膝が横に折れ、内側半月板が挟まれる<sup>［1］</sup></li>
           </ul></div>
         <div class="card b"><h3>熟練した人</h3>
           <ul>
-            <li>股関節が大きく外へ回るので、足を腿の付け根まで運んでも膝は蝶番のまま<sup>［1］</sup></li>
-            <li>両膝とお尻の三点で上体を支える<sup>［9］［10］</sup></li>
-            <li>腰が立ち、上体の重さが坐骨に乗る</li>
+            <li>股関節が大きく外へ回り、膝は蝶番のまま<sup>［1］</sup></li>
+            <li>両膝とお尻の三点で上体を支える<sup>［9］［10］</sup>。ただし最初から組めたとは限らない（南直哉氏は入門時、半跏趺坐でしのいだ）<sup>［10］</sup></li>
           </ul></div>
       </div>
-      <p class="note">熟練した人も、最初から組めたとは限りません。曹洞宗の僧侶・南直哉氏は、永平寺に入門したときは結跏趺坐が組めず、それまで半跏趺坐でしのいでいたと書いています<sup>［10］</sup>。3D模型の「<a href="../#mikurabe">二人を並べて見比べる</a>」で、同じ坐り方を並べて確かめられます。</p>
     </div>
     <span class="no">4 / 16</span>
   </section>
@@ -307,18 +323,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <h2 id="s6h">椅子で4の字</h2>
       <div class="g-pic">
         <div class="pict">
-          <svg viewBox="0 0 240 180" role="img" aria-label="椅子に座り、右の足首を左膝の上に乗せて、股関節から前へ倒れる姿勢">
-            <ellipse cx="86" cy="100" rx="22" ry="13" fill="#B23A28" opacity=".22"/>
-            <g fill="none" stroke="#A79D8C" stroke-width="5" stroke-linecap="round"><line x1="14" y1="168" x2="226" y2="168"/><line x1="58" y1="112" x2="120" y2="112"/><line x1="58" y1="112" x2="58" y2="48"/><line x1="62" y1="112" x2="62" y2="168"/><line x1="114" y1="112" x2="114" y2="168"/></g>
-            <g fill="none" stroke="#24211D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="86,104 150,106 150,160 170,162"/>
-              <polyline points="86,100 124,80 154,97 162,84"/>
-              <line x1="86" y1="104" x2="106" y2="54"/>
-              <line x1="106" y1="58" x2="140" y2="90"/>
-            </g>
-            <circle cx="114" cy="38" r="12" fill="#24211D"/>
-          </svg>
-          <p class="cap">赤い所が伸びる場所（お尻の奥・股関節の外側）</p>
+          <img src="img/chair4.webp" width="1200" height="826" alt="骨格模型：椅子に座り、右の足首を左膝の上に乗せ、上体を股関節から少し前へ倒した姿勢。右のお尻の奥が赤く示されている" loading="lazy">
+          <p class="cap">骨格模型（腕は省略）。赤い所が伸びる場所＝右のお尻の奥・股関節の外側</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.1cqw">
           <ol class="steps">
@@ -341,18 +347,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <h2 id="s7h">仰向けで4の字</h2>
       <div class="g-pic">
         <div class="pict">
-          <svg viewBox="0 0 240 180" role="img" aria-label="仰向けで右の足首を左膝に乗せ、左の太ももを両手で胸へ引き寄せる姿勢">
-            <ellipse cx="116" cy="130" rx="20" ry="12" fill="#B23A28" opacity=".22"/>
-            <g fill="none" stroke="#A79D8C" stroke-width="5" stroke-linecap="round"><line x1="10" y1="152" x2="230" y2="152"/></g>
-            <g fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="116,140 130,92 172,86" stroke="#7E766A"/>
-              <line x1="46" y1="140" x2="116" y2="140" stroke="#24211D"/>
-              <polyline points="114,136 164,116 134,96 128,82" stroke="#24211D"/>
-              <polyline points="58,136 92,112 124,106" stroke="#24211D"/>
-            </g>
-            <circle cx="32" cy="134" r="12" fill="#24211D"/>
-          </svg>
-          <p class="cap">手前が右脚。奥の左脚（薄い色）の太ももを引き寄せるほど、右のお尻の奥が伸びる</p>
+          <img src="img/supine4.webp" width="1200" height="826" alt="骨格模型：仰向けで左膝を立てて胸へ引き寄せ、右の足首を左膝の近くに乗せた姿勢。右のお尻が赤く示されている" loading="lazy">
+          <p class="cap">骨格模型を横から見た図（腕は省略）。左の太ももを引き寄せるほど、右のお尻の奥（赤）が伸びる</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.1cqw">
           <ol class="steps">
@@ -375,21 +371,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <h2 id="s8h">あわせ足（足の裏を合わせる）</h2>
       <div class="g-pic">
         <div class="pict">
-          <svg viewBox="0 0 240 180" role="img" aria-label="坐蒲に坐り、足の裏を合わせて膝を左右に開いた姿勢">
-            <ellipse cx="84" cy="144" rx="22" ry="7" fill="#B23A28" opacity=".22" transform="rotate(12 84 144)"/>
-            <ellipse cx="156" cy="144" rx="22" ry="7" fill="#B23A28" opacity=".22" transform="rotate(-12 156 144)"/>
-            <g fill="none" stroke="#A79D8C" stroke-width="5" stroke-linecap="round"><line x1="14" y1="168" x2="226" y2="168"/></g>
-            <rect x="92" y="134" width="56" height="18" rx="6" fill="#CFC5B3"/>
-            <g fill="none" stroke="#24211D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="120" y1="130" x2="120" y2="62"/>
-              <polyline points="110,136 58,150 110,162"/>
-              <polyline points="130,136 182,150 130,162"/>
-              <polyline points="108,70 98,110 108,154"/>
-              <polyline points="132,70 142,110 132,154"/>
-            </g>
-            <circle cx="120" cy="44" r="12" fill="#24211D"/>
-          </svg>
-          <p class="cap">赤い所が伸びる場所（太ももの内側）</p>
+          <img src="img/butterfly.webp" width="1200" height="826" alt="骨格模型：坐蒲に坐り、足の裏を合わせて両膝を左右に開いた姿勢。太ももの内側が赤く示されている" loading="lazy">
+          <p class="cap">骨格模型（腕は省略）。赤い所が伸びる場所＝太ももの内側</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.1cqw">
           <ol class="steps">
@@ -412,19 +395,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <h2 id="s9h">腰の外側（壁を使って）</h2>
       <div class="g-pic">
         <div class="pict">
-          <svg viewBox="0 0 240 180" role="img" aria-label="壁の横に立ち、壁側の脚を反対の脚の後ろへ交差させ、骨盤を壁のほうへ押し出す姿勢">
-            <ellipse cx="140" cy="98" rx="11" ry="19" fill="#B23A28" opacity=".22"/>
-            <g fill="none" stroke="#A79D8C" stroke-width="5" stroke-linecap="round"><line x1="14" y1="170" x2="226" y2="170"/><line x1="196" y1="16" x2="196" y2="170"/></g>
-            <g fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="134" y1="98" x2="94" y2="166" stroke="#7E766A"/>
-              <line x1="118" y1="100" x2="116" y2="166" stroke="#24211D"/>
-              <line x1="126" y1="98" x2="104" y2="44" stroke="#24211D"/>
-              <line x1="110" y1="52" x2="188" y2="70" stroke="#24211D"/>
-              <line x1="98" y1="54" x2="86" y2="94" stroke="#24211D"/>
-            </g>
-            <circle cx="100" cy="30" r="12" fill="#24211D"/>
-          </svg>
-          <p class="cap">壁側（図では右側）の腰の外側が伸びる。後ろに回した脚は薄く描いています</p>
+          <img src="img/wall.webp" width="800" height="640" alt="骨格模型：壁の横に立ち、壁側の左脚を右脚の後ろへ交差させた姿勢。左の腰の外側が赤く示されている" loading="lazy">
+          <p class="cap">骨格模型を正面から（腕は省略）。図の右が壁。壁側の腰の外側（赤）が伸びる</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.1cqw">
           <p class="note" style="font-size:1.45cqw">股関節を内へ回す筋肉（大腿筋膜張筋・中殿筋など）が硬いと、外旋が制限されると説明されています<sup>［2］</sup>。</p>
@@ -448,19 +420,8 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
       <h2 id="s10h">太ももの前</h2>
       <div class="g-pic">
         <div class="pict">
-          <svg viewBox="0 0 240 180" role="img" aria-label="壁につかまって片脚で立ち、反対の足首を手で持ってかかとをお尻に近づける姿勢">
-            <ellipse cx="104" cy="118" rx="8" ry="18" fill="#B23A28" opacity=".22"/>
-            <g fill="none" stroke="#A79D8C" stroke-width="5" stroke-linecap="round"><line x1="14" y1="170" x2="226" y2="170"/><line x1="200" y1="16" x2="200" y2="170"/></g>
-            <g fill="none" stroke="#24211D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="110,96 112,132 112,166 132,168"/>
-              <polyline points="110,98 104,138 78,108"/>
-              <line x1="110" y1="96" x2="114" y2="44"/>
-              <line x1="114" y1="50" x2="192" y2="62"/>
-              <line x1="112" y1="52" x2="80" y2="104"/>
-            </g>
-            <circle cx="118" cy="28" r="12" fill="#24211D"/>
-          </svg>
-          <p class="cap">膝は真下に向け、腰を反らさない</p>
+          <img src="img/quad.webp" width="800" height="640" alt="骨格模型：片脚で立ち、反対の膝を深く曲げてかかとをお尻へ近づけた姿勢。太ももの前が赤く示されている" loading="lazy">
+          <p class="cap">骨格模型を横から（腕は省略）。膝は真下に向け、太ももの前（赤）を伸ばす</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.1cqw">
           <ol class="steps">
@@ -599,7 +560,7 @@ table.menu thead th{font:700 1.45cqw/1.4 var(--font-mincho);color:var(--sumi);bo
         <li>Severe isolated sciatic neuropathy due to a modified lotus position. World J Clin Cases 2014;2(2):39-41 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3936218" rel="noopener noreferrer" target="_blank">PMC3936218</a></li>
         <li>Chusid JG「Yoga Foot Drop」JAMA 1971 <a href="https://jamanetwork.com/journals/jama/article-abstract/338611" rel="noopener noreferrer" target="_blank">jamanetwork.com</a></li>
       </ol>
-      <p class="note">ストレッチのやり方のうち出典番号のないものは、一般的に行われている方法をもとにまとめたものです。図は模式図で、正確な姿勢を示すものではありません。</p>
+      <p class="note">ストレッチのやり方のうち出典番号のないものは、一般的に行われている方法をもとにまとめたものです。図は3D骨格模型から描き出したもので（腕は省略）、正確な姿勢やからだの個人差を示すものではありません。</p>
     </div>
     <span class="no">16 / 16</span>
   </section>
