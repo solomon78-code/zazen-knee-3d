@@ -134,7 +134,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,#c:focus-visible{outlin
 .checks label{display:flex;align-items:center;gap:8px;cursor:pointer;min-height:36px}
 
 .demo{border:1px solid var(--line);border-radius:4px;padding:16px;background:var(--card)}
-.status{border:1px solid var(--line);border-left:4px solid var(--ai);background:var(--card);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.status{scroll-margin-top:130px;border:1px solid var(--line);border-left:4px solid var(--ai);background:var(--card);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .status[data-level="ok"]{border-left-color:var(--ok)}
 .status[data-level="warn"]{border-left-color:#C99A3B}
 .status[data-level="bad"]{border-left-color:var(--shu)}
@@ -212,6 +212,79 @@ sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .foot{display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.85;color:var(--muted);padding-top:18px;border-top:3px double var(--line)}
 .foot h2{font-size:17px}
 .foot ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+/* 筋肉の表（舞台の左上）とストレッチの再生バー */
+.mhud{position:absolute;left:12px;top:10px;z-index:2;width:230px;background:rgba(13,16,23,.8);border:1px solid rgba(237,230,214,.2);border-radius:6px;padding:6px 8px 7px;color:#EDE6D6;font-size:12px;line-height:1.35}
+.mhud[hidden]{display:none}
+.mh-h{display:flex;align-items:center;gap:6px}
+.mh-h b{font-size:12px;font-weight:700;flex:1}
+.mh-x{appearance:none;border:1px solid rgba(237,230,214,.3);background:transparent;color:#EDE6D6;border-radius:4px;width:30px;height:26px;font-size:12px;cursor:pointer}
+.mh-x:hover{border-color:#EDE6D6}
+#mhRows{display:flex;flex-direction:column;gap:1px;margin-top:4px}
+.mh-r{appearance:none;display:grid;grid-template-columns:10px 1fr 3.3em 52px;align-items:center;gap:6px;width:100%;border:1px solid transparent;background:transparent;color:#EDE6D6;font:inherit;text-align:left;padding:3px 4px;border-radius:4px;cursor:pointer;min-height:28px}
+.mh-r:hover{background:rgba(237,230,214,.08)}
+.mh-r[aria-pressed="true"]{border-color:#FF9A6B;background:rgba(255,122,69,.14)}
+.mh-r i{width:10px;height:10px;border-radius:50%;display:block}
+.mh-r .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mh-r .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.mh-r .bar{height:6px;border-radius:3px;background:#2C303A;overflow:hidden;display:block}
+.mh-r .bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#C9503A,#FF7A45)}
+.mh-n{margin:4px 0 0;font-size:10.5px;color:#A9A194;line-height:1.45}
+.mhud.closed #mhRows,.mhud.closed .mh-n{display:none}
+.mhud.closed{width:auto}
+.stage.hud .overlay-top,.stage.str .overlay-top,.stage.str .cams{display:none}
+.strbar{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;display:flex;align-items:center;gap:10px;background:rgba(13,16,23,.82);border:1px solid rgba(237,230,214,.2);border-radius:8px;padding:7px 10px}
+.strbar[hidden]{display:none}
+.strbar .btn{min-height:38px;font-size:12.5px;background:rgba(24,23,21,.78);color:#EDE6D6;border:1px solid rgba(237,230,214,.32);padding:6px 10px;flex:none}
+.strbar .btn:hover{border-color:#EDE6D6}
+.strbar .sb-play{width:44px;font-size:14px;background:var(--shu);color:#12141A;border-color:var(--shu);font-weight:700}
+.sb-mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.sb-mid input{width:100%;margin:0;accent-color:var(--shu)}
+.sb-ends{display:flex;justify-content:space-between;font-size:10.5px;color:#A9A194}
+.sb-txt{font-size:12.5px;color:#EDE6D6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+/* ストレッチの説明（3段の流れ） */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px 4px;font-size:12.5px;line-height:1.45}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:4px 8px;color:var(--sumi)}
+.flow span.k{border-color:#E07A5F;color:#F6C3B6}
+.flow em{font-style:normal;color:var(--shu);font-weight:700}
+.strsteps{margin:0;padding-left:1.4em;font-size:14px;line-height:1.7;display:flex;flex-direction:column;gap:2px}
+.feel{margin:6px 0 0;font-size:13.5px;line-height:1.7}
+.feel span{display:inline-block;font-size:11.5px;font-weight:700;color:#12141A;background:#E2B65C;border-radius:3px;padding:1px 6px;margin-right:6px}
+.chain{display:flex;flex-direction:column;gap:0;margin:10px 0 4px}
+.ch{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:9px 11px;position:relative}
+.ch+.ch{margin-top:16px}
+.ch+.ch::before{content:"↓";position:absolute;top:-17px;left:14px;color:var(--shu);font-weight:700;font-size:13px;line-height:16px}
+.ch .cn{flex:none;width:22px;height:22px;border-radius:50%;background:var(--shu);color:#12141A;font-weight:700;font-size:12.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.ch .ct{display:block;font:700 14.5px/1.4 var(--font-mincho);color:var(--sumi)}
+.ch p{margin:2px 0 0;font-size:13.5px;line-height:1.75}
+.cmpt caption{caption-side:top;text-align:left;font-size:12px;color:var(--muted);padding:6px 0 2px}
+@media (max-width:860px){
+  .stage.str{height:62vh;max-height:640px}
+  .mhud{left:8px;right:8px;top:8px;width:auto;font-size:11.5px;padding:4px 6px;background:rgba(13,16,23,.72)}
+  .mh-h,.mh-n{display:none}
+  #mhRows{flex-direction:row;flex-wrap:wrap;gap:2px 4px;margin:0}
+  .mh-r{display:inline-flex;width:auto;gap:4px;min-height:28px;padding:2px 6px}
+  .mh-r .bar{display:none}
+  .mh-r .v{text-align:left}
+  .mhud.closed #mhRows{display:flex}
+  .strbar{left:8px;right:8px;bottom:8px;gap:7px;padding:6px 8px}
+  .strbar .sb-cam{display:none}
+  .sb-txt{font-size:11.5px}
+}
+/* タブ（見るものを選ぶ） */
+.tabsbar{display:flex;flex-direction:column;gap:6px;position:sticky;top:0;z-index:3;background:var(--washi);padding:10px 0 8px;margin:-10px 0 -8px;box-shadow:0 8px 10px -8px rgba(0,0,0,.6)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#0D0F14;border:1px solid var(--line);border-radius:8px;padding:4px}
+.tabs button{appearance:none;display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--text);font:500 13px/1.3 var(--font-gothic);padding:7px 2px 6px;min-height:52px;cursor:pointer}
+.tabs button .ti{font:700 15px/1 var(--font-mincho);color:var(--muted)}
+.tabs button:hover{background:var(--card2);color:var(--sumi)}
+.tabs button[aria-selected="true"]{background:var(--shu);color:#12141A;font-weight:700}
+.tabs button[aria-selected="true"] .ti{color:#12141A}
+.tabdesc{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0;padding:0 2px}
+.disp{border:1px solid var(--line);border-radius:4px;padding:0 14px;background:var(--card)}
+.disp summary{cursor:pointer;font:700 14px/1.4 var(--font-mincho);color:var(--sumi);padding:12px 0;list-style:none;display:flex;align-items:center;gap:8px}
+.disp summary::-webkit-details-marker{display:none}
+.disp summary::before{content:"▸";color:var(--shu);transition:transform .15s}
+.disp[open] summary::before{transform:rotate(90deg)}
+.disp[open]{padding-bottom:12px}
 /* 舞台の上の表示 */
 .overlay-top{position:absolute;left:12px;top:10px;right:12px;pointer-events:none;font-size:12px;color:rgba(237,230,214,.75)}
 .overlay-top span{display:inline-block;background:rgba(13,16,23,.6);border:1px solid rgba(237,230,214,.18);border-radius:999px;padding:4px 11px}
@@ -239,7 +312,7 @@ sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .cmpt tbody th{font-weight:400;color:var(--muted);width:38%}
 .cmpt td.warn{color:var(--warn);font-weight:700}.cmpt td.bad{color:var(--shu);font-weight:700}
 .sbar{height:7px;border-radius:4px;background:#2C303A;overflow:hidden;margin:2px 0 3px}
-.sbar span{display:block;height:100%;background:linear-gradient(90deg,#E2B65C,#E8553C)}
+.sbar span{display:block;height:100%;background:linear-gradient(90deg,#C9503A,#FF7A45)}
 .cmpt.str tr.sub td{border-bottom:1px solid var(--line);padding-top:0;font-size:12.5px;color:var(--muted)}
 .cmpt.str tr:not(.sub) th,.cmpt.str tr:not(.sub) td{border-bottom:none;padding-bottom:2px}
 .kleg{margin:4px 0 0;padding-left:1.4em;font-size:12.5px;line-height:1.6;color:var(--text)}
@@ -262,6 +335,10 @@ noscript p{padding:16px;color:#EDE6D6}
   h1{font-size:25px}
   .lbl{font-size:10.5px;padding:2px 5px}
   .stage.cmp-tb{height:64vh;max-height:660px}
+  .tabsbar{position:static;box-shadow:none;z-index:auto}
+  .status{scroll-margin-top:calc(min(44vh,520px) + 12px)}
+  .tabs button{font-size:12.5px;min-height:50px}
+  .stage.str .stage-slides,.stage.hud .stage-slides{display:none}
   .overlay-top{display:none}
   .stage-slides{font-size:12px;padding:8px 12px}
   .cmptag{font-size:12px;padding:4px 7px}
@@ -279,6 +356,19 @@ noscript p{padding:16px;color:#EDE6D6}
     <div class="cmptag b" id="cmpTagB">熟練した人<small>股関節が大きく外へ回る</small></div>
     <a class="stage-slides" href="guide/">▶ スライドで学ぶ</a>
     <div class="overlay-top"><span>⟲ ドラッグで回転　・　二本指／ホイールで拡大</span></div>
+    <div class="mhud" id="mhud" hidden>
+      <div class="mh-h"><b id="mhTitle">筋肉の伸び</b><button class="mh-x" id="mhFold" aria-expanded="true" aria-label="表をたたむ" aria-controls="mhRows">▴</button></div>
+      <div id="mhRows"></div>
+      <p class="mh-n">％＝立った姿勢と比べた長さの変化。棒＝結跏趺坐で必要な伸びに対する割合。名前を押すと、その筋肉が光ります。</p>
+    </div>
+    <div class="strbar" id="strBar" hidden>
+      <button class="btn sb-play" id="sbPlay" aria-label="一時停止">❚❚</button>
+      <div class="sb-mid">
+        <input type="range" id="sbU" min="0" max="1000" value="0" aria-label="ストレッチの動きの位置（左が始めの姿勢、右が伸ばした姿勢）">
+        <div class="sb-txt" id="sbStep" aria-live="off"></div>
+      </div>
+      <button class="btn sb-cam" id="sbCam">視点を戻す</button>
+    </div>
     <div class="cams" role="group" aria-label="視点">
       <button class="btn" data-cam="front" aria-pressed="true">正面</button>
       <button class="btn" data-cam="top" aria-pressed="false">上から</button>
@@ -322,24 +412,39 @@ noscript p{padding:16px;color:#EDE6D6}
       <p class="lead">股関節の「外旋」が足りないまま足を腿に乗せると、膝の内側では半月板が挟まれ、外側では靭帯が伸ばされます。実物の骨の形をもとにした模型を動かして、その仕組みを確かめられます。</p>
       <a class="toslides" href="guide/"><span class="ic" aria-hidden="true">▶</span><span><b>スライドで学ぶ</b><small>膝を痛めないためのストレッチ・ガイド（16枚）</small></span><span class="ar" aria-hidden="true">→</span></a>
       <nav class="toc" aria-label="ページ内の目次">
-        <a href="#controls">模型を動かす</a><a href="#gaisen">外旋とは</a><a href="#ugoki">動きの名前</a><a href="#shikumi">膝を痛める仕組み</a><a href="#basho">負担がかかる場所</a><a href="#strGroup">筋肉とストレッチ</a><a href="#kurabe">硬い人と熟練者</a><a href="guide/">ストレッチ・ガイド</a><a href="#taisaku">負担を減らす工夫</a><a href="#faq">よくある質問</a><a href="#sources">出典</a>
+        <a href="#controls">模型を動かす</a><a href="#gaisen">外旋とは</a><a href="#ugoki">動きの名前</a><a href="#shikumi">膝を痛める仕組み</a><a href="#basho">負担がかかる場所</a><a href="#controls" data-gotab="str">筋肉とストレッチ</a><a href="#kurabe">硬い人と熟練者</a><a href="guide/">ストレッチ・ガイド</a><a href="#taisaku">負担を減らす工夫</a><a href="#faq">よくある質問</a><a href="#sources">出典</a>
       </nav>
     </header>
 
     <div class="howto" aria-label="使い方">
-      <span class="n">1</span><span><b>坐り方を選ぶ</b>：下の「① 坐り方を選ぶ」のボタンを押します。</span>
-      <span class="n">2</span><span><b>股関節の硬さを変える</b>：「②」のつまみを左右に動かします。左ほど硬い人です。</span>
-      <span class="n">3</span><span><b>膝の色を見る</b>：緑は膝が守られている、黄・赤は膝に負担。「右膝」「左膝」で近くから見られます。</span>
+      <span class="n">1</span><span><b>見たいものを選ぶ</b>：下の4つのタブ（坐り方と膝・見比べる・動きの名前・ストレッチ）から選びます。</span>
+      <span class="n">2</span><span><b>番号の順に操作する</b>：タブの中のボタンやつまみを、番号の順に動かします。</span>
+      <span class="n">3</span><span><b>模型と色を見る</b>：膝の緑は守られている、黄・赤は負担。筋肉は明るい朱色ほど強く伸ばされています。</span>
       <span class="n">⟲</span><span>模型は<b>ドラッグで回転</b>、<b>二本指（ホイール）で拡大</b>できます。</span>
+    </div>
+
+    <div class="tabsbar" id="controls">
+      <div class="tabs" role="tablist" aria-label="模型で見るもの">
+        <button role="tab" id="tab-sit" data-tab="sit" aria-selected="true"><span class="ti" aria-hidden="true">膝</span>坐り方と膝</button>
+        <button role="tab" id="tab-cmp" data-tab="cmp" aria-selected="false"><span class="ti" aria-hidden="true">⇆</span>見比べる</button>
+        <button role="tab" id="tab-demo" data-tab="demo" aria-selected="false"><span class="ti" aria-hidden="true">↻</span>動きの名前</button>
+        <button role="tab" id="tab-str" data-tab="str" aria-selected="false"><span class="ti" aria-hidden="true">筋</span>ストレッチ</button>
+      </div>
+      <p class="tabdesc" id="tabDesc"></p>
     </div>
 
     <div class="status" id="status" data-level="ok" aria-live="polite">
       <div class="head" id="statusHead">計算しています…</div>
       <div class="body" id="statusBody"></div>
     </div>
+    <div class="legend" id="kneeKey" aria-label="膝の色の意味">
+      <span><i style="background:#7FA36B"></i>膝は蝶番のまま</span>
+      <span><i style="background:#D8A845"></i>膝に横向き・ねじれの負担</span>
+      <span><i style="background:#D5553A"></i>負担が大きい</span>
+    </div>
 
     <div class="group" id="postureGroup">
-      <div class="glabel" id="controls"><span class="step">1</span>坐り方を選ぶ</div>
+      <div class="glabel"><span class="step">1</span>坐り方を選ぶ</div>
       <div class="seg" id="posture" role="group" aria-label="姿勢">
         <button data-v="lotus" aria-pressed="true">結跏趺坐</button>
         <button data-v="half" aria-pressed="false">半跏趺坐</button>
@@ -355,6 +460,20 @@ noscript p{padding:16px;color:#EDE6D6}
       <div class="seg" id="top" role="group" aria-label="上になる足">
         <button data-v="R" aria-pressed="false">右足</button>
         <button data-v="L" aria-pressed="true">左足</button>
+      </div>
+    </div>
+
+    <div class="group cmp-g" id="cmpGroup">
+      <div class="glabel"><span class="step">2</span>初心者の硬さを選ぶ（外旋の上限）</div>
+      <div id="cmpBody">
+        <div class="seg" id="cmpStiff" role="group" aria-label="初心者の硬さ">
+          <button data-v="20" aria-pressed="false">とても硬い 20°</button>
+          <button data-v="30" aria-pressed="true">硬い 30°</button>
+          <button data-v="45" aria-pressed="false">ふつう 45°</button>
+        </div>
+        <p class="hint">左（スマホでは上）が体の硬い初心者、右（下）が熟練した人です。視点を回すと両方が同時に動きます。模型の下の「右膝」「左膝」で、膝を近くから比べられます。</p>
+        <div id="cmpTable"></div>
+        <p class="hint">設定は模型上の想定で、実在の人の測定値ではありません。初心者：坐蒲5cm、骨盤を10°後ろへ傾けた状態（腰が丸まる）。熟練した人：外旋の上限130°、坐蒲10cm、骨盤を10°前へ傾けた状態（腰が立つ）。「足の乗せ方」は初心者側の動きを切り替えます。</p>
       </div>
     </div>
 
@@ -391,80 +510,65 @@ noscript p{padding:16px;color:#EDE6D6}
       <p class="hint">坐蒲の高さは坐骨の下の厚みです。骨盤は左へ動かすと後ろへ傾き（腰が丸まる）、右へ動かすと前へ傾きます（腰が立つ）。</p>
     </div>
 
-    <div class="group cmp-g" id="cmpGroup">
-      <div class="glabel">見比べる：体の硬い人と、熟練した人</div>
-      <p class="hint">同じ坐り方を、左（スマホでは上）に体の硬い初心者、右（下）に熟練した人で並べます。視点を回すと両方が同時に動きます。「右膝」「左膝」で膝を近くから比べられます。</p>
-      <div class="seg"><button id="cmpOn" class="primary" aria-pressed="false">⇆ 二人を並べて見比べる</button></div>
-      <div id="cmpBody">
-        <div class="glabel" style="margin-top:4px">初心者の硬さ（股関節の外旋の上限）</div>
-        <div class="seg" id="cmpStiff" role="group" aria-label="初心者の硬さ">
-          <button data-v="20" aria-pressed="false">とても硬い 20°</button>
-          <button data-v="30" aria-pressed="true">硬い 30°</button>
-          <button data-v="45" aria-pressed="false">ふつう 45°</button>
-        </div>
-        <div id="cmpTable"></div>
-        <p class="hint">設定は模型上の想定で、実在の人の測定値ではありません。初心者：坐蒲5cm、骨盤を10°後ろへ傾けた状態（腰が丸まる）。熟練した人：外旋の上限130°、坐蒲10cm、骨盤を10°前へ傾けた状態（腰が立つ）。「足の乗せ方」は初心者側の動きを切り替えます。</p>
-      </div>
-    </div>
 
     <div class="group demo" id="demoGroup">
-      <div class="glabel">外旋ってなに？ 動きの名前を見る</div>
       <p class="hint" id="demoLead">外旋は、太ももの骨をその長い軸のまわりで外向きに回す動きです。屈曲・外転・膝の曲げ伸ばしなど、ほかの動きも右脚だけ動かして見られます。</p>
-      <div class="seg" id="demoPose" role="group" aria-label="外旋を見る姿勢">
+      <div class="glabel"><span class="step">1</span>姿勢を選ぶ</div>
+      <div class="seg" id="demoPose" role="group" aria-label="動きを見る姿勢">
         <button data-v="stand" aria-pressed="false">立って見る</button>
         <button data-v="sit" aria-pressed="false">椅子に座って見る</button>
       </div>
-      <div id="demoAxisRow">
+      <div id="demoAxisRow" class="group">
+        <div class="glabel"><span class="step">2</span>動きを選ぶ</div>
         <div class="seg" id="demoAxis" role="group" aria-label="動きの種類">
           <button data-v="rot" aria-pressed="true">外旋・内旋</button>
           <button data-v="flex" aria-pressed="false">屈曲・伸展</button>
           <button data-v="abd" aria-pressed="false">外転・内転</button>
           <button data-v="knee" aria-pressed="false">膝の曲げ伸ばし</button>
         </div>
+        <div class="glabel"><span class="step">3</span>動かす</div>
       </div>
       <div class="slider" id="demoSlider"><label for="demoER" id="demoERlabel">回す</label><input type="range" id="demoER" min="-40" max="120" step="1" value="0"><output id="demoERv" for="demoER">0°</output></div>
       <div class="chips" id="demoChips">
         <button class="btn" id="demoPlay">▶ 動かして見る</button>
         <button class="btn" data-dv="45">45°（参考可動域）</button>
         <button class="btn" data-dv="-30">内旋 30°</button>
-        <button class="btn" id="demoExit">↩ 坐禅の模型に戻る</button>
       </div>
     </div>
 
     <div class="group" id="strGroup">
-      <div class="glabel">ストレッチで何が変わる？ 筋肉を見る</div>
-      <p class="hint">股関節を外へ回すと、内へ回す筋肉（中殿筋・小殿筋など）が引き伸ばされます。体の硬い人は、この筋肉が一定以上伸ばされると張りを感じて止まり、足りない分を膝が補います。ボタンを押すと、ストレッチの姿勢でどの筋肉がどれだけ伸びるかを、結跏趺坐で必要な伸びと比べて見られます。</p>
-      <div class="checks"><label><input type="checkbox" id="chkMus"> 股関節の筋肉を線で表示（どの坐り方でも）</label></div>
-      <div class="legend"><span><i style="background:#7C8798"></i>ゆるんでいる</span><span><i style="background:#E2B65C"></i>伸ばされている</span><span><i style="background:#E8553C"></i>強く伸ばされている</span></div>
+      <div class="flow" aria-label="ストレッチが膝を守るまでの流れ"><span>ストレッチ</span><em>→</em><span>お尻の筋肉が伸ばされることに慣れる</span><em>→</em><span>股関節が外へ回る範囲が広がる</span><em>→</em><span>膝が肩代わりするねじれ・横曲げが減る</span><em>→</em><span class="k">半月板・靭帯の負担が減る</span></div>
+      <p class="hint">股関節を外へ回すと、内へ回す働きのある筋肉（中殿筋・小殿筋など）が引き伸ばされます。体の硬い人は、この筋肉が一定以上伸ばされると張りを感じて止まり、足りない分を膝が補います。ボタンを押すと、ストレッチの動きと、どの筋肉がどれだけ伸びるかを見られます。</p>
+      <div class="glabel"><span class="step">1</span>ストレッチを選ぶ</div>
       <div class="seg" id="strSeg" role="group" aria-label="ストレッチを選ぶ">
         <button data-v="chair4" aria-pressed="false">① 椅子で4の字</button>
         <button data-v="supine4" aria-pressed="false">② 仰向けで4の字</button>
         <button data-v="butterfly" aria-pressed="false">③ あわせ足</button>
-        <button data-v="wall" aria-pressed="false">④ 腰の外側</button>
+        <button data-v="wall" aria-pressed="false">④ お尻の横</button>
         <button data-v="quad" aria-pressed="false">⑤ 太ももの前</button>
       </div>
+      <div class="legend"><span><i style="background:#7A5A55"></i>ゆるんでいる</span><span><i style="background:#C9503A"></i>伸ばされている</span><span><i style="background:#FF7A45"></i>強く伸ばされている（細長くなる）</span><span><i style="background:#D8D0BF"></i>腱</span></div>
+      <div class="glabel"><span class="step">2</span>模型の動きと、下の説明を見る</div>
+      <p class="hint">模型の下のバーで、一時停止やコマ送りができます。左上の表の筋肉名を押すと、その筋肉が光ります。</p>
       <div id="strInfo"></div>
+      <div class="glabel"><span class="step">3</span>柔らかくなると、膝はどう変わる？</div>
       <div class="chips">
-        <button class="btn" id="strGrow">▶ 柔らかくなっていくと（外旋の上限 30°→120°）</button>
-        <button class="btn" id="strExit">↩ 坐禅の模型に戻る</button>
+        <button class="btn primary" id="strGrow">▶ 結跏趺坐で、外旋の上限を 30°→120° に広げて見る</button>
       </div>
-      <p class="hint">線は骨の付着部を直線で結んだ模型上の目安で、実際の筋肉の伸びとは一致しません。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるより、伸ばされる感覚に慣れる（張りを感じ始める位置が先へずれる）ためだという説明が有力です<sup>［16］</sup>。</p>
+      <p class="hint">押すと「坐り方と膝」のタブに移り、筋肉を表示したまま、股関節が柔らかくなっていく様子を動かします。</p>
+      <p class="hint">筋肉の形は、骨の付着部どうしを結んだ模型上の目安です。実際の筋肉は骨や他の筋肉に沿って曲がって走るため、伸びの値は実物と一致しません。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるより、伸ばされる感覚に慣れる（張りを感じ始める位置が先へずれる）ためだという説明が有力です<sup>［16］</sup>。</p>
     </div>
 
-    <div class="group">
-      <div class="glabel">表示</div>
+    <details class="group disp" id="dispGroup">
+      <summary>表示の設定（肉付け・ラベル・筋肉・雪）</summary>
       <div class="checks">
         <label><input type="checkbox" id="chkFlesh" checked> 肉付け</label>
         <label><input type="checkbox" id="chkLabels" checked> 角度ラベル</label>
         <label><input type="checkbox" id="chkGhost" checked> 膝を守った場合の脚（青い影）</label>
+        <label><input type="checkbox" id="chkMus"> 股関節の筋肉</label>
         <label><input type="checkbox" id="chkSnow" checked> 雪を降らせる</label>
       </div>
-      <div class="legend">
-        <span><i style="background:#7FA36B"></i>膝は蝶番のまま</span>
-        <span><i style="background:#D8A845"></i>膝に横向き・ねじれの負担</span>
-        <span><i style="background:#D5553A"></i>負担が大きい</span>
-      </div>
-    </div>
+    </details>
 
     <div class="group" id="legsGroup">
       <div class="glabel">左右の脚（この模型での計算値）</div>
@@ -481,7 +585,7 @@ noscript p{padding:16px;color:#EDE6D6}
 
     <article class="text">
       <h2 id="gaisen"><span class="num">一</span>外旋とは</h2>
-      <p>股関節の「外旋」は、太ももの骨（大腿骨）を、その長い軸を回転の軸にして外向きに回す動きです。逆向きに回すのが「内旋」です。上の「外旋ってなに？」で実際に回して見られます。</p>
+      <p>股関節の「外旋」は、太ももの骨（大腿骨）を、その長い軸を回転の軸にして外向きに回す動きです。逆向きに回すのが「内旋」です。上の「動きの名前」タブで実際に回して見られます。</p>
       <ul>
         <li>立っているとき：膝のお皿とつま先が外を向きます（がに股の向き）。</li>
         <li>膝を曲げているとき：同じ回転で、すねがワイパーのように内側へ振れ、足が反対側の脚のほうへ寄りながら上がっていきます。結跏趺坐で足を反対の腿に乗せられるのは、この動きがあるからです。</li>
@@ -489,7 +593,7 @@ noscript p{padding:16px;color:#EDE6D6}
       </ul>
 
       <h2 id="ugoki"><span class="num">二</span>そのほかの動きの名前</h2>
-      <p>関節の動きは、向きが逆の二つを組にして呼びます。坐禅にかかわるものをまとめました。（　）の数字は参考可動域です<sup>［5］</sup>。上の「動きの名前を見る」で、股関節と膝の動きを実際に動かせます。</p>
+      <p>関節の動きは、向きが逆の二つを組にして呼びます。坐禅にかかわるものをまとめました。（　）の数字は参考可動域です<sup>［5］</sup>。上の「動きの名前」タブで、股関節と膝の動きを実際に動かせます。</p>
       <div class="moves">
         <div class="mv"><h3>股関節の屈曲・伸展</h3><p class="def">太ももを前へ上げるのが屈曲（125°）、後ろへ引くのが伸展（15°）。</p><p>坐ると約90°の屈曲になります。骨盤を立てる（前傾させる）ほど屈曲は深くなります。</p></div>
         <div class="mv"><h3>股関節の外転・内転</h3><p class="def">脚を横へ開くのが外転（45°）、内へ閉じるのが内転（20°）。</p><p>両膝を左右に開くのに使います。開くだけでは足は腿に乗らず、外旋と組み合わさって初めて乗ります。</p></div>
@@ -552,7 +656,7 @@ noscript p{padding:16px;color:#EDE6D6}
       <p>感じ方の目安：膝の内側がつまる感じは①、外側が張る感じは②の合図です。模型の「右膝」「左膝」の視点で、それぞれの場所に名前が表示されます。</p>
 
       <h2 id="kurabe"><span class="num">四</span>体の硬い人と、熟練した人の違い</h2>
-      <p>上の「見比べる」で、同じ坐り方を二人並べて表示できます。体の硬い初心者は股関節の外旋が少なく、坐蒲も低く、腰が丸まりがちです。熟練した人は股関節が大きく外へ回るので、足を腿の付け根まで運んでも膝は蝶番のまま、両膝が床に下ります。</p>
+      <p>上の「見比べる」タブで、同じ坐り方を二人並べて表示できます。体の硬い初心者は股関節の外旋が少なく、坐蒲も低く、腰が丸まりがちです。熟練した人は股関節が大きく外へ回るので、足を腿の付け根まで運んでも膝は蝶番のまま、両膝が床に下ります。</p>
       <ul>
         <li><b>体の硬い初心者</b>：膝が床から浮く。それでも足を腿に乗せようと足首を引き上げると、不足分が膝の横曲げ・ねじれになり、内側半月板が挟まれ、外側側副靭帯が伸ばされる。</li>
         <li><b>熟練した人</b>：股関節の外旋で足を運ぶので、膝は曲げ伸ばしの向きのまま。結跏趺坐では両膝とお尻の三点で上体を支えると説明されます<sup>［6］［13］</sup>。</li>
@@ -592,7 +696,7 @@ noscript p{padding:16px;color:#EDE6D6}
       <div class="qa"><h3>股関節の外旋とは何ですか？</h3><p>太ももの骨を、その長い軸のまわりで外向きに回す動きです。立っているときは膝のお皿とつま先が外を向き、膝を曲げて坐っているときは、すねがワイパーのように内側へ振れて足が上がります。参考可動域は45°とされ<sup>［5］</sup>、蓮華座（結跏趺坐）には約115°の外旋が要るという解説があります<sup>［1］</sup>。</p></div>
       <div class="qa"><h3>屈曲・伸展、外転・内転、内旋とは何ですか？</h3><p>どれも関節の動きの名前で、向きが逆の二つを組にして呼びます。股関節では、太ももを前へ上げるのが屈曲、後ろへ引くのが伸展、脚を横へ開くのが外転、閉じるのが内転、太ももの骨を外へ回すのが外旋、内へ回すのが内旋です。膝の主な動きは屈曲と伸展（曲げ伸ばし）です。坐禅で足を腿に乗せるときの主役は外旋で、外転と屈曲がそれを助けます。</p></div>
       <div class="qa"><h3>体が硬い人は、どんなストレッチをすればいいですか？</h3><p>股関節を外へ回す筋肉や、太ももの内側・お尻の奥を、痛くない範囲でゆっくり伸ばすのが基本です。椅子に座って足首を反対の膝に乗せる「4の字」のストレッチは、体の硬い人でも始めやすい方法です。1回20〜30秒、反動をつけず、息を止めずに行います。膝に痛みが出る形は避けてください。やり方と注意点は、<a href="guide/">ストレッチ・ガイド（スライド）</a>にまとめています。</p></div>
-      <div class="qa"><h3>ストレッチをすると、体の中で何が変わるのですか？</h3><p>股関節を外へ回すと、中殿筋・小殿筋など股関節を内へ回す筋肉が引き伸ばされます。体の硬い人は、これらが一定以上伸ばされると張りを感じて動きが止まります。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるよりも、伸ばされる感覚に体が慣れて、張りを感じ始める位置が先へずれるためだという説明が有力です。このページの模型では、ストレッチの姿勢でどの筋肉がどれだけ伸びるかを、結跏趺坐で必要な伸びと比べて見られます（「ストレッチで何が変わる？」）。<sup>［16］</sup></p></div>
+      <div class="qa"><h3>ストレッチをすると、体の中で何が変わるのですか？</h3><p>股関節を外へ回すと、中殿筋・小殿筋など股関節を内へ回す筋肉が引き伸ばされます。体の硬い人は、これらが一定以上伸ばされると張りを感じて動きが止まります。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるよりも、伸ばされる感覚に体が慣れて、張りを感じ始める位置が先へずれるためだという説明が有力です。このページの模型では、ストレッチの動きと、どの筋肉がどれだけ伸びるかを、結跏趺坐で必要な伸びと比べて見られます（上の「ストレッチ」タブ）。<sup>［16］</sup></p></div>
       <div class="qa"><h3>結跏趺坐が組めないときはどうすればいいですか？</h3><p>無理に組む必要はありません。道元の『普勧坐禅儀』には結跏趺坐と並んで半跏趺坐が示されており<sup>［9］</sup>、曹洞宗の坐禅の案内には、無理をしすぎない坐り方を見つけることや、椅子での坐り方も示されています<sup>［6］</sup>。足を腿に乗せないビルマ式や正座、椅子での坐禅も選べます。骨の形で外旋の上限が決まっていて、練習しても変わらない人もいるという指摘があります<sup>［4］</sup>。</p></div>
       <div class="qa"><h3>坐禅のあと足がしびれたらどうすればいいですか？</h3><p>急に立たないでください。曹洞宗の案内では、脚を小さく揺らしてからほどき、急に立たないよう示されています<sup>［6］</sup>。まれに、長時間の坐り方の習慣で神経のまひが起きた症例報告もあります<sup>［7］［8］</sup>。しびれが長く続く、足首が上がりにくいといった場合は受診してください。</p></div>
       <div class="qa"><h3>どんなときに病院に行けばいいですか？</h3><p>膝の曲げ伸ばしで引っかかる、膝が途中で動かなくなる（ロッキング）、腫れる・水がたまる、痛みが続く、といった場合は整形外科を受診してください。これらは半月板損傷で見られる症状とされています<sup>［10］</sup>。</p></div>
