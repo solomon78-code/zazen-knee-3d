@@ -36,6 +36,7 @@
 {"@type":"Question","name":"股関節の外旋とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"太ももの骨を、その長い軸のまわりで外向きに回す動きです。立っているときは膝のお皿とつま先が外を向き、膝を曲げて坐っているときは、すねがワイパーのように内側へ振れて足が上がります。参考可動域は45°とされ、蓮華座（結跏趺坐）には約115°の外旋が要るという解説があります。"}},
 {"@type":"Question","name":"屈曲・伸展、外転・内転、内旋とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"どれも関節の動きの名前で、向きが逆の二つを組にして呼びます。股関節では、太ももを前へ上げるのが屈曲、後ろへ引くのが伸展、脚を横へ開くのが外転、閉じるのが内転、太ももの骨を外へ回すのが外旋、内へ回すのが内旋です。膝の主な動きは屈曲と伸展（曲げ伸ばし）です。坐禅で足を腿に乗せるときの主役は外旋で、外転と屈曲がそれを助けます。"}},
 {"@type":"Question","name":"体が硬い人は、どんなストレッチをすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"股関節を外へ回す筋肉や、太ももの内側・お尻の奥を、痛くない範囲でゆっくり伸ばすのが基本です。椅子に座って足首を反対の膝に乗せる「4の字」のストレッチは、体の硬い人でも始めやすい方法です。1回20〜30秒、反動をつけず、息を止めずに行います。膝に痛みが出る形は避けてください。やり方と注意点は、このサイトのストレッチ・ガイド（スライド）にまとめています。"}},
+{"@type":"Question","name":"ストレッチをすると、体の中で何が変わるのですか？","acceptedAnswer":{"@type":"Answer","text":"股関節を外へ回すと、中殿筋・小殿筋など股関節を内へ回す筋肉が引き伸ばされます。体の硬い人は、これらが一定以上伸ばされると張りを感じて動きが止まります。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるよりも、伸ばされる感覚に体が慣れて、張りを感じ始める位置が先へずれるためだという説明が有力です。このページの模型では、ストレッチの姿勢でどの筋肉がどれだけ伸びるかを、結跏趺坐で必要な伸びと比べて見られます。"}},
 {"@type":"Question","name":"結跏趺坐が組めないときはどうすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"無理に組む必要はありません。道元の『普勧坐禅儀』には結跏趺坐と並んで半跏趺坐が示されており、曹洞宗の坐禅の案内には、無理をしすぎない坐り方を見つけることや、椅子での坐り方も示されています。足を腿に乗せないビルマ式や正座、椅子での坐禅も選べます。骨の形で外旋の上限が決まっていて、練習しても変わらない人もいるという指摘があります。"}},
 {"@type":"Question","name":"坐禅のあと足がしびれたらどうすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"急に立たないでください。曹洞宗の案内では、脚を小さく揺らしてからほどき、急に立たないよう示されています。まれに、長時間の坐り方の習慣で神経のまひが起きた症例報告もあります。しびれが長く続く、足首が上がりにくいといった場合は受診してください。"}},
 {"@type":"Question","name":"どんなときに病院に行けばいいですか？","acceptedAnswer":{"@type":"Answer","text":"膝の曲げ伸ばしで引っかかる、膝が途中で動かなくなる（ロッキング）、腫れる・水がたまる、痛みが続く、といった場合は整形外科を受診してください。これらは半月板損傷で見られる症状とされています。"}}
@@ -237,6 +238,10 @@ sup{font-size:10.5px;color:var(--ai);font-weight:700}
 .cmpt thead th{font:700 13px/1.4 var(--font-mincho);color:var(--sumi)}
 .cmpt tbody th{font-weight:400;color:var(--muted);width:38%}
 .cmpt td.warn{color:var(--warn);font-weight:700}.cmpt td.bad{color:var(--shu);font-weight:700}
+.sbar{height:7px;border-radius:4px;background:#2C303A;overflow:hidden;margin:2px 0 3px}
+.sbar span{display:block;height:100%;background:linear-gradient(90deg,#E2B65C,#E8553C)}
+.cmpt.str tr.sub td{border-bottom:1px solid var(--line);padding-top:0;font-size:12.5px;color:var(--muted)}
+.cmpt.str tr:not(.sub) th,.cmpt.str tr:not(.sub) td{border-bottom:none;padding-bottom:2px}
 .kleg{margin:4px 0 0;padding-left:1.4em;font-size:12.5px;line-height:1.6;color:var(--text)}
 .kleg b.bad{color:var(--shu)}.kleg b.warn{color:var(--warn)}
 .lbl{position:absolute;transform:translate(-50%,-100%);font-size:11.5px;line-height:1.4;background:rgba(24,23,21,.86);color:#EDE6D6;border:1px solid rgba(237,230,214,.28);border-radius:3px;padding:3px 7px;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -317,7 +322,7 @@ noscript p{padding:16px;color:#EDE6D6}
       <p class="lead">股関節の「外旋」が足りないまま足を腿に乗せると、膝の内側では半月板が挟まれ、外側では靭帯が伸ばされます。実物の骨の形をもとにした模型を動かして、その仕組みを確かめられます。</p>
       <a class="toslides" href="guide/"><span class="ic" aria-hidden="true">▶</span><span><b>スライドで学ぶ</b><small>膝を痛めないためのストレッチ・ガイド（16枚）</small></span><span class="ar" aria-hidden="true">→</span></a>
       <nav class="toc" aria-label="ページ内の目次">
-        <a href="#controls">模型を動かす</a><a href="#gaisen">外旋とは</a><a href="#ugoki">動きの名前</a><a href="#shikumi">膝を痛める仕組み</a><a href="#basho">負担がかかる場所</a><a href="#kurabe">硬い人と熟練者</a><a href="guide/">ストレッチ・ガイド</a><a href="#taisaku">負担を減らす工夫</a><a href="#faq">よくある質問</a><a href="#sources">出典</a>
+        <a href="#controls">模型を動かす</a><a href="#gaisen">外旋とは</a><a href="#ugoki">動きの名前</a><a href="#shikumi">膝を痛める仕組み</a><a href="#basho">負担がかかる場所</a><a href="#strGroup">筋肉とストレッチ</a><a href="#kurabe">硬い人と熟練者</a><a href="guide/">ストレッチ・ガイド</a><a href="#taisaku">負担を減らす工夫</a><a href="#faq">よくある質問</a><a href="#sources">出典</a>
       </nav>
     </header>
 
@@ -424,6 +429,26 @@ noscript p{padding:16px;color:#EDE6D6}
         <button class="btn" data-dv="-30">内旋 30°</button>
         <button class="btn" id="demoExit">↩ 坐禅の模型に戻る</button>
       </div>
+    </div>
+
+    <div class="group" id="strGroup">
+      <div class="glabel">ストレッチで何が変わる？ 筋肉を見る</div>
+      <p class="hint">股関節を外へ回すと、内へ回す筋肉（中殿筋・小殿筋など）が引き伸ばされます。体の硬い人は、この筋肉が一定以上伸ばされると張りを感じて止まり、足りない分を膝が補います。ボタンを押すと、ストレッチの姿勢でどの筋肉がどれだけ伸びるかを、結跏趺坐で必要な伸びと比べて見られます。</p>
+      <div class="checks"><label><input type="checkbox" id="chkMus"> 股関節の筋肉を線で表示（どの坐り方でも）</label></div>
+      <div class="legend"><span><i style="background:#7C8798"></i>ゆるんでいる</span><span><i style="background:#E2B65C"></i>伸ばされている</span><span><i style="background:#E8553C"></i>強く伸ばされている</span></div>
+      <div class="seg" id="strSeg" role="group" aria-label="ストレッチを選ぶ">
+        <button data-v="chair4" aria-pressed="false">① 椅子で4の字</button>
+        <button data-v="supine4" aria-pressed="false">② 仰向けで4の字</button>
+        <button data-v="butterfly" aria-pressed="false">③ あわせ足</button>
+        <button data-v="wall" aria-pressed="false">④ 腰の外側</button>
+        <button data-v="quad" aria-pressed="false">⑤ 太ももの前</button>
+      </div>
+      <div id="strInfo"></div>
+      <div class="chips">
+        <button class="btn" id="strGrow">▶ 柔らかくなっていくと（外旋の上限 30°→120°）</button>
+        <button class="btn" id="strExit">↩ 坐禅の模型に戻る</button>
+      </div>
+      <p class="hint">線は骨の付着部を直線で結んだ模型上の目安で、実際の筋肉の伸びとは一致しません。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるより、伸ばされる感覚に慣れる（張りを感じ始める位置が先へずれる）ためだという説明が有力です<sup>［16］</sup>。</p>
     </div>
 
     <div class="group">
@@ -567,6 +592,7 @@ noscript p{padding:16px;color:#EDE6D6}
       <div class="qa"><h3>股関節の外旋とは何ですか？</h3><p>太ももの骨を、その長い軸のまわりで外向きに回す動きです。立っているときは膝のお皿とつま先が外を向き、膝を曲げて坐っているときは、すねがワイパーのように内側へ振れて足が上がります。参考可動域は45°とされ<sup>［5］</sup>、蓮華座（結跏趺坐）には約115°の外旋が要るという解説があります<sup>［1］</sup>。</p></div>
       <div class="qa"><h3>屈曲・伸展、外転・内転、内旋とは何ですか？</h3><p>どれも関節の動きの名前で、向きが逆の二つを組にして呼びます。股関節では、太ももを前へ上げるのが屈曲、後ろへ引くのが伸展、脚を横へ開くのが外転、閉じるのが内転、太ももの骨を外へ回すのが外旋、内へ回すのが内旋です。膝の主な動きは屈曲と伸展（曲げ伸ばし）です。坐禅で足を腿に乗せるときの主役は外旋で、外転と屈曲がそれを助けます。</p></div>
       <div class="qa"><h3>体が硬い人は、どんなストレッチをすればいいですか？</h3><p>股関節を外へ回す筋肉や、太ももの内側・お尻の奥を、痛くない範囲でゆっくり伸ばすのが基本です。椅子に座って足首を反対の膝に乗せる「4の字」のストレッチは、体の硬い人でも始めやすい方法です。1回20〜30秒、反動をつけず、息を止めずに行います。膝に痛みが出る形は避けてください。やり方と注意点は、<a href="guide/">ストレッチ・ガイド（スライド）</a>にまとめています。</p></div>
+      <div class="qa"><h3>ストレッチをすると、体の中で何が変わるのですか？</h3><p>股関節を外へ回すと、中殿筋・小殿筋など股関節を内へ回す筋肉が引き伸ばされます。体の硬い人は、これらが一定以上伸ばされると張りを感じて動きが止まります。ストレッチを数週間続けて柔らかくなるのは、筋肉そのものが長くなるよりも、伸ばされる感覚に体が慣れて、張りを感じ始める位置が先へずれるためだという説明が有力です。このページの模型では、ストレッチの姿勢でどの筋肉がどれだけ伸びるかを、結跏趺坐で必要な伸びと比べて見られます（「ストレッチで何が変わる？」）。<sup>［16］</sup></p></div>
       <div class="qa"><h3>結跏趺坐が組めないときはどうすればいいですか？</h3><p>無理に組む必要はありません。道元の『普勧坐禅儀』には結跏趺坐と並んで半跏趺坐が示されており<sup>［9］</sup>、曹洞宗の坐禅の案内には、無理をしすぎない坐り方を見つけることや、椅子での坐り方も示されています<sup>［6］</sup>。足を腿に乗せないビルマ式や正座、椅子での坐禅も選べます。骨の形で外旋の上限が決まっていて、練習しても変わらない人もいるという指摘があります<sup>［4］</sup>。</p></div>
       <div class="qa"><h3>坐禅のあと足がしびれたらどうすればいいですか？</h3><p>急に立たないでください。曹洞宗の案内では、脚を小さく揺らしてからほどき、急に立たないよう示されています<sup>［6］</sup>。まれに、長時間の坐り方の習慣で神経のまひが起きた症例報告もあります<sup>［7］［8］</sup>。しびれが長く続く、足首が上がりにくいといった場合は受診してください。</p></div>
       <div class="qa"><h3>どんなときに病院に行けばいいですか？</h3><p>膝の曲げ伸ばしで引っかかる、膝が途中で動かなくなる（ロッキング）、腫れる・水がたまる、痛みが続く、といった場合は整形外科を受診してください。これらは半月板損傷で見られる症状とされています<sup>［10］</sup>。</p></div>
@@ -592,6 +618,7 @@ noscript p{padding:16px;color:#EDE6D6}
         <li>南直哉「真に目指すべき坐禅の心とは？」現代ビジネス、2019年7月24日 <a href="https://gendai.media/articles/-/65940" rel="noopener noreferrer" target="_blank">gendai.media</a></li>
         <li>Yoga Journal「Know Your Knees」（整形外科医 Ray Long への取材を含む） <a href="https://www.yogajournal.com/teach/anatomy-yoga-practice/know-your-knees/" rel="noopener noreferrer" target="_blank">yogajournal.com</a></li>
         <li>Everyday Yoga「How to Do Half Lotus Pose in Yoga」 <a href="https://www.everydayyoga.com/blogs/guides/how-to-do-half-lotus-pose-in-yoga" rel="noopener noreferrer" target="_blank">everydayyoga.com</a></li>
+        <li>Weppler CH, Magnusson SP「Increasing muscle extensibility: a matter of increasing length or modifying sensation?」Phys Ther 2010;90(3):438-49 <a href="https://pubmed.ncbi.nlm.nih.gov/20075147/" rel="noopener noreferrer" target="_blank">PubMed 20075147</a></li>
       </ol>
     </article>
 
